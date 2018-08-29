@@ -1,5 +1,30 @@
 \documentclass{article}
-\usepackage[utf8]{inputenc}
+\usepackage{hwtemplate}
+\finalfalse
+\midtermfalse
+\solutionfalse
+\commenttrue
+\exno7
+
+\graphicspath{{figs/}}
+\input setdef
 \begin{document}
-(Type your content here.)
-\end{document}
+\iffinal \input final \else
+\ifmidterm \input midterm \else
+
+\def\duedate{\ifcase\exno{None}
+\or{October 11, 2017}%
+\or{October 18, 2017}%
+\or{October 25, 2017}%
+\or{November 1, 2017}%
+\or{November 15, 2017}%
+\or{November 29, 2017}%
+\or{December 6, 2017}%
+\fi}
+\rhead{\small \textcolor{sugray}{Assignment \the\exno}}
+\rightline{\raise 10pt\hbox{\small \textcolor{sugray}%
+{due Wednesday, \duedate}}}
+\input{text/\the\exno}
+
+\fi \fi
+\end{document}  

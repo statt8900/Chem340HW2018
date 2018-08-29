@@ -1,0 +1,102 @@
+\problem{5}
+We showed in class that the energy fluctuation $\ave{(\delta U)^2}$ in canonical ensemble
+is given by $k_{\rm\scriptstyle B}T^2 C_V$.
+In the grand canonical ensemble with fixed $(\mu,V,T)$, the number of particles $N$ fluctuates,
+and a corresponding fluctuation-response relation holds.
+Show that the average and variation are given by
+\begin{align}
+\ave{N} &= \kT \pdc{\ln\Xi(\mu,V,T)}{\mu}{V,T} \nonumber\\
+\ave{(\delta N)^2} &= \kT \pdc{\ave{N}}{\mu}{V,T} \label{eq:Nfluct}
+\end{align}
+where $\Xi$ is the grand canonical partition function
+and $\ave{(\delta N)^2}$ is the variance $\ave{(N - \ave{N})^2}$.
+
+\bigskip
+\problem{5}
+Which of the following curves is a possible candidate for the
+$V$-dependence of entropy $S$? Why?
+
+\smallskip
+\centerline{\includegraphics[width=0.30\textwidth,height=!]{figs/SofV}}
+
+\bigskip
+\bigskip
+\problem{12}
+Consider the isothermal-isobaric ensemble with fixed $(N,p,T)$,
+appropriate for systems in thermal and mechanical contact with exterior reservoirs.
+The system energy and volume can fluctuate.
+By following the steps explained in lecture and notes for canonical and
+grand canonical ensembles, show that maximizing the entropy
+$S = -k_{\scriptscriptstyle \rm B} \sum_i \mathcal{P}_i \ln(\mathcal{P}_i)$
+subject to the constraints
+\begin{align*}
+\sum_i \mathcal{P}_i &= 1 \\
+\sum_i \mathcal{P}_i\, E_i &= U \\
+\sum_i \mathcal{P}_i\, V_i &= V 
+\end{align*}
+leads to the following statistical properties:
+
+\smallskip\subp
+The probability of observing a particular microstate $i$ with energy $E_i$ and volume $V_i$ is proportional to
+$$ \mathcal{P}_i\propto\exp\left(-\frac{E_i + p V_i}{\kT}\right) .$$
+
+\smallskip\subp
+The partition function
+$\Delta (N,p,T) \equiv \sum_i \exp\left(-\frac{E_i + p V_i}{\kT}\right)$
+relates to the Gibbs free energy by
+$$ G = - \kT \ln \Delta(N,p,T) .$$
+
+\rightline{\sl see next page for more questions}
+\vfil\eject
+
+\ \smallskip\subp
+The amplitude of volume fluctuation is governed by the response to pressure change
+$$ \ave{(\delta V)^2} = -\kT \pdc{\ave{V}}{p}{N,T} = \kT V \kappa_T.$$
+Note that this amplitude diverges at the limit of stability, i.e., when $\partial p/\partial{V} = 0$.
+
+\smallskip\subp
+Show that, for ideal gases, the relative fluctuation decreases with system size according to 
+$$ \frac{\ave{(\delta V)^2}^{1/2}}{\ave{V}} = \frac{1}{\sqrt{N}} . $$
+
+\bigskip
+\problem{15}
+Denote the canonical partition function of a single particle by $q=q(V,T)$.
+In general, $q$ can be written as a product, $q=V f(T)$.
+$f(T)$ has dimension of inverse volume, depends on temperature,
+and measures the excitation of the internal degrees of freedoms.
+Although the functional form of $f(T)$ is not known,
+we can derive the equations of states and the thermodynamic potentials using $q$.
+Let's consider a gas of a variable number of {\sl non-interacting} and
+{\sl indistinguishable} particles confined to a volume $V$.
+The gas is held at constant temperature $T$ and chemical potential $\mu$
+by coupling with thermal and chemical reservoirs.
+
+\smallskip\subp
+Compute the grand canonical ensemble partition function $\Xi(\mu,V,T)$.
+It needs to be expressed in terms of $q$, $T$, and $\mu$.
+No explicit reference to $V$ or $f(T)$ is needed.
+
+\smallskip\subp
+Use the thermodynamic potential $pV = \kT \ln\Xi(\mu,V,T)$
+and the Gibbs-Duhem relation to find the average number of particles $\ave{N}$.
+Show that it leads to the ideal gas law
+$$ pV = \ave{N} \kT .$$
+
+\smallskip\subp
+Show that the equation of state relating particle number to chemical potential is given by
+$$ \mu = \kT \ln\left(\frac{\ave{N}}{q}\right) .$$
+Use this relation and Eq.~(\ref{eq:Nfluct}) to show that $\ave{(\delta N)^2} = \ave{N}$.
+
+\smallskip\subp
+Find the entropy by using the Gibbs-Duhem relation, and show that it can be written as
+$$ S = \ave{N} \kB\left[ 1 + \ln \left(\frac{q}{\ave{N}}\right) + \dd{\ln f(T)}{\ln T} \right] .$$
+Is this entropy extensive? Explain your reasoning.
+
+\smallskip\subp
+Find the two remaining potentials, the internal energy $U$ and the Helmholtz free energy $F$,
+and show that they are given by
+\begin{align*}
+U &= \ave{N} \kT \dd{\ln f(T)}{\ln T} , \\
+F &= -\ave{N} \kT \left[1 +  \ln \left(\frac{q}{\ave{N}}\right) \right].
+\end{align*}
+The Gibbs free energy is $G = \ave{N} \mu$, so we did not ask you to calculate it.

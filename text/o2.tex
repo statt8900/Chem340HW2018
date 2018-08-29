@@ -1,0 +1,98 @@
+\problem{5}
+The lecture note on Classical Mechanics
+explained that
+the Newton's equation of motion conserves the total energy $H = K + V$
+if the potential $V$ does not depend on time explicitly, i.e.,
+$\frac{{\rm d} H}{{\rm d}t} = 0$ for $V = V(x)$.
+Show that if the potential depend on time explicitly, so that $V = V(x,t)$,
+the following holds: $\frac{{\rm d} H}{{\rm d}t} = \frac{\partial V(x,t)}{\partial t}$.
+
+\bigskip
+\problem{5}
+Assume the electron-proton distance $a$ inside a hydrogen atom can be measured.
+The binding potential energy is largely electrostatic, of order $V \simeq \frac{e^2}{4\pi \epsilon_0 a}$,
+where $e$ is the element charge and $\epsilon_0$ the vacuum dielectric permittivity.
+The kinetic energy of electron is estimated by $K \simeq \frac{\hbar^2}{2ma^2}$,
+in which $m$ is the mass of electron.
+Setting $V \simeq K$ to balance the potential and kinetic energies yields an estimate to $a$,
+the range of electron's motion.
+Calculate this range, and compare your value to the known hydrogen radius $r_{\rm\scriptscriptstyle H} = 0.53\,$\AA.
+Calculate the gravitational energy between the electron and the proton using $E = \frac{G m m_{\rm p}}{a}$,
+where $G$ is the gravitational constant and $m_{\rm p}$ the proton mass.
+Compare $E$ to $V$, and convince yourself that $E$ is negligible.
+
+\bigskip
+\problem{25}
+A unique phenomenon in quantum mechanics is {\sl tunneling}.
+A particle can penetrate a potential barrier whose height exceeds the particle's kinetic energy.
+To illustrate this point, we investigate how an incoming plane wave is scattered by a rectangle potential $V(x)$,
+of the following form:
+\begin{eqnarray*}
+V(x) = U,\ 0 < x < L;
+{\rm and}\ V(x) = 0,\ {\rm otherwise}.
+\end{eqnarray*}
+The shape of the potential landscape is illustrated below.
+
+\smallskip
+\centerline{\includegraphics[width=0.45\textwidth,height=!]{figs/tunneling}}
+
+\noindent
+We consider the stationary states for the particle described by the equation
+\begin{equation}
+\left[-\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x) \right]\psi(x) = E\,\psi(x).
+\end{equation}
+Here $m$ is mass, and $E$ is the energy of the particle coming from far left.
+We are interested in how this particle is scattered by $V(x)$, i.e.,
+we are specifically interested in the wave function of the form
+\begin{equation}
+\psi(x) = \left\{\begin{aligned}
+& \enskip\, \ee^{\img k x} + r\,\ee^{-\img k x},\qquad x < 0;\\
+& a\, \ee^{\img q x} + b\,\ee^{-\img q x},\qquad 0 < x < L;\\
+& t\, \ee^{\img k x}, \qquad\qquad\qquad\ x > L.
+\end{aligned}\right.
+\label{eq:fwave}
+\end{equation}
+Here the wavevetors are defined by $k\equiv\sqrt{2mE}/\hbar$ and $q\equiv\sqrt{2m(E-U)}/\hbar$ respectively.
+The incoming wave is $\ee^{\img k x}$, the reflected wave is $r\,\ee^{-\img k x}$,
+the transmitted wave is $t\,\ee^{\img k x}$,
+and $a$ and $b$ are the plane wave amplitudes inside the scattering region.
+
+\rightline{See next page for questions.}
+\vfil\eject
+
+\ \bigskip
+\subp
+Show that the proposed wave function Eq.~(2) satisfies the Schr\"odinger equation Eq.~(1)
+in regimes I ($x<0$), II ($0 < x < L$), and III ($x > L$) respectively.
+
+\smallskip
+\subp
+Solve the two unknown wave amplitudes $r$ and $t$ by demanding that the wave functions $\psi(x)$
+and its derivative $\psi'(x)$ be continuous at the boundaries $x = 0$ and $x = L$.
+Note that $r$, $t$, $a$, and $b$ are in general complex-valued.\hfil\break
+{\bf Hint}: {\it Treat $a$ and $b$ as auxiliary variables.
+First express them in terms of $r$ by appying the boundary conditions at $x =0$.
+Then plugging the results to the boundary conditions at $x=L$,
+to find a linear equations connecting $r$ and $t$.}
+
+\smallskip
+\subp
+The probability of the particle being reflected is given by the reflectivity $R \equiv |r|^2 = r^* r$,
+and the probability of passing through the barrier is given by the transmissivity $T \equiv |t|^2 = t^* t$,
+$r^*$ and $t^*$ being the complex conjugates of $r$ and $t$ respectively.
+Find the expressions for $R$ and $T$.
+Show that $R + T = 1$, which is the conservation law.
+
+\smallskip
+\subp
+Plot the transmissivity $T(E)$ in the energy range $0 < E < 2 U$ for $U = \hbar^2 / (2 m L^2)$.
+Note, in particular, the nonzero tunneling probability for $E < U$,
+which is strictly prohibited by classical mechanics.
+What are the limits of $T$ for $E \ll U$ and $E \gg U$?
+
+\smallskip
+\subp
+Show that the transmissivity $T$ is given by% $T = 2 / (2 + m U L^2/\hbar^2)$
+$$ T = \frac{2}{2 + m UL^2 /\hbar^2} $$
+when the energy is close to the barrier height, i.e., $E \simeq U$.
+

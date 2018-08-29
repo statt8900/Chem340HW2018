@@ -1,0 +1,64 @@
+% lectemp.sty
+%    templating style for lecture materials
+%    Jian Qin, 8/9/2016
+
+% load package
+\usepackage{amsmath,amssymb,amsbsy,graphicx,color,setspace,fancyhdr}
+\definecolor{sured}{RGB}{140,21,21}
+\definecolor{sublue}{RGB}{0,152,219}
+\definecolor{sugray}{RGB}{77,79,83}
+\usepackage[version=4]{mhchem}
+
+\def\course{CHEMENG~340\enskip\S\enskip Molecular Thermodynamics}
+
+% page setup
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-1cm}
+\setlength{\headheight}{1cm}
+\setlength{\headsep}{0.0cm}
+\setlength{\textheight}{9.0in}
+\setlength{\footskip}{0.5in}
+\setlength{\marginparsep}{5pt}
+\setlength{\parskip}{1pt}
+
+% exercise and sub-problem styling; ASCII code for the letter 'a' is 97.
+\newcount\prbno \prbno=0
+\newcount\subno \subno=96
+
+\def\problem#1{\advance\prbno by 1\subno=96
+\rightskip0pt
+\noindent\textbf{Problem~\the\prbno\enskip(#1 points)}
+\par\smallskip\noindent\ignorespaces
+}
+
+\def\subp{\advance\subno by 1
+\parindent30pt \par\noindent
+\hangindent\parindent\hangafter0\rightskip\parindent
+\llap{({\hbox to 1.4em{\hfil\the\prbno.\char\subno\hfil}})\enskip}\ignorespaces
+}
+
+\def\pts#1{({\sl #1~point\ifnum#1>1 s\fi})}
+
+% Set the enumerate format.
+\renewcommand{\labelenumi}{(\alph{enumi})}
+
+% page number location
+
+\renewcommand{\headrulewidth}{.3pt}
+\renewcommand{\footrulewidth}{0.3pt}
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\small \textcolor{sugray}{\course}}
+\cfoot{\small \textcolor{sugray}{\thepage}}
+
+\advance \topskip by 10pt
+
+% switches
+\newif\iffinal
+\newif\ifmidterm
+\newif\ifsolution
+\newif\ifcomment
+\newcount\exno

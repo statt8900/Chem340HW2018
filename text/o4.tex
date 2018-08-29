@@ -1,0 +1,102 @@
+\problem{10}
+The isentropic compressibility is defined by $\kappa_S \equiv -\frac{1}{V}\pdc{V}{p}{S}$.
+Show that $\kappa_S$ relates to the isobaric and isochoric heat capacities as follows:
+\begin{align*}
+C_V &= \frac{TV\alpha^2 \kappa_S}{(\kappa_T - \kappa_S)\kappa_T}  \\
+C_p &= \frac{TV\alpha^2}{\kappa_T - \kappa_S} .
+\end{align*}
+For ideal gas, find an expression that relates $\kappa_S$ to $C_p$, $p$ and $V$.
+
+\bigskip
+\problem{6}
+The equation of state for non-ideal fluids may be analyzed by studying
+the compressibility factor $Z$ defined by $Z\equiv pv/(RT)$,
+where $v$ is the molecular molar volume $V/N$.
+The virial expansion for $Z$ is defined as
+$$Z = 1 + \frac{B_2}{v} + \frac{B_3}{v^2} + \cdots$$
+where $B_2$, $B_3$, $\cdots$ are called the second, the third,
+$\ldots$ virial coefficients, which are determined by the inter-molecular interactions.
+
+\smallskip
+\subp
+Find the second and the third virial coefficents for a van der Waals fluid with an equation of state 
+$p = RT/(v - b) - a / v^2$.
+
+\smallskip
+\subp
+The second virial coefficient relates to the pairwise inter-molecular potential $u(r)$ by
+$$ B_2 = 2\pi \NA \int_0^\infty\left[1 - \exp\left(-\frac{u(r)}{\kT}\right)\right] r^2 dr. $$
+%In the ``hard-sphere'' model, the interaction potential between two molecules is given by
+%\begin{equation*}
+%\Gamma(r) = \left\{\begin{aligned}
+%     0,\quad& r\ge d, \\
+%\infty,\quad& 0 < r < d.
+%\end{aligned}\right.
+%\end{equation*}
+At short distance, the inter-molecular potential is dominated by repulsion.
+Assume $u(r)$ is given by $u(r) = c\, r^{-n} \, (n>3)$, in which $c$ is a positive constant.
+Show that $B_2$ is given by
+\begin{equation*}
+B_2 = \frac{2\pi \NA}{3} \left(\frac{c}{\kT}\right)^{3/n} \Gamma(1-3/n),
+\end{equation*}
+where the $\Gamma$ function is defined by
+$\Gamma(z) \equiv \int_{0}^\infty\!dx\, \ee^{-x} x^{z-1} $.
+{\bf Hint}: {\sl try integration by part}.
+
+\bigskip
+\problem{15}
+Reduce the following five derivatives in terms of standard quantities,
+$C_p$, $\alpha$ and $\kappa_T$.
+
+\begin{equation*}
+\pdc{S}{V}{p}, \quad
+\pdc{V}{T}{S}, \quad
+\pdc{H}{V}{T}, \quad
+\pdc{V}{p}{H}, \quad
+\pdc{V}{S}{H}
+\end{equation*}
+
+\bigskip
+\problem{20}
+Consider a gas that is at a high pressure $p_1$ at temperature $T_1$
+that is throttled through a valve to a lower pressure $p_2$.
+The throttle valve is insulated, so no heat is passed to the gas as it goes through the valve.
+No work is done in the process.
+Describe the valve as an open system with inlet at pressure $p_1$ and outlet at pressure $p_2$.
+
+\rightline{See next page for questions.}
+\vfil\eject
+
+\ \medskip
+\subp
+Given that the valve is an open system,
+what is the relationship between the molar enthalpy of the inlet stream
+$H_{1}$ and outlet stream $H_{2}$?
+
+\smallskip
+\subp
+To calculate the change in temperature for this process, define the Joule-Thomson coefficient
+$$\mu = \left( \frac{\partial T}{\partial p} \right)_{H} $$
+Explain in a couple of sentences how $\mu$ can be use to find the outlet temperature $T_{2}$ from $p_{1}$, $T_{1}$, $p_{2}$.
+
+\smallskip
+\subp
+Derive an expression for $\mu$ is terms of standard thermodynamic variables
+and measurables $C_{p}$, $\alpha$, and $\kappa_T$.
+
+\smallskip
+\subp
+Show that the Joule-Thomson coefficient is zero for an ideal gas.
+
+\smallskip
+\subp
+Consider the virial equation of state
+$$ \frac{pv}{RT} = 1 + \frac{B(T)}{v} $$
+Derive an expression for $\mu$ in terms of $T$, $B$, and $C_{p}$.
+
+\smallskip
+\subp
+Explain in a couple of sentences the conditions where $\mu$ is positive, negative, and zero.
+In your explanation, clearly state the thermodynamic properties that
+are constrained to be positive due to thermodynamic stability.
+

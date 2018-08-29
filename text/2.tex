@@ -1,0 +1,480 @@
+%%%%%%%%%% Problem 1 %%%%%%%%%%
+\problem{10}
+Two equations of state have been proposed for rubber bands 
+(based on L.~R.G. Treloar's work, 1943):
+\begin{align}
+S &= L_0 \gamma(\theta U/L_0)^{1/2} - L_0\gamma\left[
+\frac{1}{2}\left(\frac{L}{L_0}\right)^2 + \frac{L_0}{L} - \frac{3}{2}\right] \\
+S &= L_0 \gamma\ee^{\theta n U/L_0} - L_0\gamma\left[
+\frac{1}{2}\left(\frac{L}{L_0}\right)^2 + \frac{L_0}{L} - \frac{3}{2}\right]
+\end{align}
+Above, $\gamma$, $l_0$, and $\theta$ are constants, 
+$L$ is the variable length of the rubber band,
+$L_0 = n l_0$ is the rest length,
+and $S$ and $U$ have their usual meaning.
+Here, $n$ is a `mass-like' quantity
+describing the size of the band.
+
+\smallskip
+\subp Which of the two equations is thermodynamically acceptable? Why? 
+\solution{ \\
+We need to check if entropy is extensive.
+By definition, $U$ must be extensive.
+Both $n$ and $L$ must be extensive because
+the rest length and extended length
+should scale with the size of the rubber band.
+Therefore, we are trying to show that 
+$S(\lambda U,\lambda n,\lambda L) = \lambda S(U,n,L)$. \\ \\
+Equation (1):
+\begin{align*}
+S(\lambda U, \lambda n, \lambda L) &= 
+       \lambda L_0 \gamma (\theta \lambda U / (\lambda L_0))^{1/2} 
+     - \lambda L_0 \gamma \left[
+       \frac{1}{2} \left( \frac{\lambda L}{\lambda L_0} \right)^2 
+     + \frac{\lambda L_0}{\lambda L} - \frac{3}{2}\right ] \\
+    &= \lambda L_0 \gamma \left[ (\theta U/L_0)^{1/2} 
+     - \frac{1}{2} \left( \frac{L}{L_0} \right)^2 - \frac{L}{L_0}
+     + \frac{3}{2} \right] \\
+    &= \lambda S(U, n, L)
+\end{align*}
+Equation (2):
+\begin{align*}
+S(\lambda U, \lambda n, \lambda L) &= 
+       \lambda L_0 \gamma \exp\left( \frac{\theta \lambda n \lambda U}
+                                          {\lambda L_0} \right) 
+     - \lambda L_0 \gamma \left [ \frac{1}{2} \left( 
+       \frac{\lambda L}{\lambda L_0} \right ) ^2 
+     + \frac{\lambda L_0}{\lambda L} - \frac{3}{2} \right] \\
+    &= \lambda L_0 \gamma \left[ \exp\left( \frac{\textcolor{red}{\lambda} \theta n U}
+                                                 {L_0} \right) 
+     - \frac{1}{2} \left( \frac{L}{L_0} \right)^2 - \frac{L_0}{L}
+     + \frac{3}{2} \right] \\
+    &\neq \lambda S(U,V,n)
+\end{align*}
+The second equation is invalid because entropy isn't extensive.
+\begin{center}
+\fbox{Only equation (1) is thermodynamically acceptable.}
+\end{center}
+}
+
+\smallskip
+\subp
+For the acceptable choice, (i) find the expression for temperature $T$,
+and (ii) deduce the dependence of the tension $f$ upon $T$ and $L/L_0$ --
+that is, find $f(T,L/L_0)$.
+Here $f$ is defined as the force required to 
+stretch the rubber band to length $L$.
+{\bf Hint}: {\sl The first law is $\dd U = T \dd S + f \dd L$\/}. 
+\solution{ \\
+Given the hint, it follows that $T = \pdc{U}{S}{n,L}$. By the inverse rule:
+\[ \frac{1}{T} = \pdc{S}{U}{n,L} 
+ = \frac{L_0 \gamma}{2} \left( \frac{\theta}{U L_0} \right)^{1/2} \] 
+\[ \boxed{\text{(i) } T = \frac{2}{\gamma}
+          \left( \frac{U}{L_0 \theta} \right)^{1/2}} \]
+The other partial derivative of $\dd U = T \dd S + f \dd L$ yields $f$: 
+\[ f = \pdc{U}{L}{S} = -\pdc{S}{L}{U} \pdc{U}{S}{L} 
+     = -T \pdc{S}{L}{U}
+     = T L_0 \gamma \left( \frac{L}{L_0^2} - \frac{L_0}{L^2} \right)  
+     = \gamma T \left( \frac{L}{L_0} - \frac{L_0^2}{L^2} \right) \]
+\[ \boxed{ \text{(ii) } f(T,\frac{L}{L_0}) = 
+   \gamma T \left( \frac{L}{L_0} - \frac{L_0^2}{L^2} \right) } \]
+}
+
+
+
+
+%%%%%%%%%% Problem 2 %%%%%%%%%%
+\bigskip\problem{15}
+The Helmholtz free energy for some fluid is given by:
+\[ F(N,V,T) = Nf_0 - Ns_0(T-T_0) - \frac{a N^2}{V} 
+            - NRT \ln \left(\frac{V/N-b}{v_0} \right) 
+            + N \int_{T_0}^T \left( \frac{T'-T}{T'} \right)
+              c_V^\text{ideal}(T')\,\dd T'\, . \]
+Above, $f_0$, $s_0$, $T_0$, $a$, and $b$ are constants.
+All other symbols adopt their standard meanings.
+
+\smallskip\subp Find the internal energy expressed in terms of $N$, $V$ and $T$.
+\solution{\\
+By definition, $F = U - TS$. 
+Therefore, to get $U(N,V,T)$, we need to find $S(N,V,T)$:
+\begin{align*}
+ S(N,V,T) &= -\left (\frac{\partial F}{\partial T} \right )_{V,N} \\
+          &= Ns_0 + NR \ln \left( \frac{V/N -b}{v_0} \right) 
+              - N \frac{\partial}{\partial T} \int_{T_0}^T 
+              \left( \frac{T^{\prime} - T}{T^{\prime}} \right)
+              c_v ^{\mathrm{ideal}}(T^{\prime})\,dT^{\prime} \\
+          &= Ns_0 + NR \ln \left( \frac{V/N -b}{v_0} \right) 
+              - N \frac{\partial}{\partial T} \int_{T_0}^T 
+                c_v ^{\mathrm{ideal}}(T^{\prime})\,dT^{\prime} 
+              + N \frac{\partial}{\partial T} \int_{T_0}^T 
+                \frac{T}{T^{\prime}}c_v^{\mathrm{ideal}}(T^{\prime})\,dT^{\prime} \\
+          &= Ns_0 + NR \ln \left( \frac{V/N -b}{v_0} \right)
+              + N \int_{T_0}^T 
+                \frac{c_v^{\mathrm{ideal}} (T^{\prime})}{T^{\prime}}\,dT^{\prime} 
+\end{align*}
+Comparing the expressions for $F(N,V,T)$ and $TS(N,V,T)$, applying $U = F + TS$ yields
+\[ \boxed{ U(N,V,T) = N f_0 + N T_0 s_0 - \frac{aN^2}{V} 
+                    + N \int_{T_0}^T c_v^{\mathrm{ideal}} (T^{\prime{}})dT^{\prime} } \]
+}
+
+
+
+\smallskip\subp Find the mechanical equation of state, i.e., $PVT$ relationship, for this fluid.
+\solution{\\
+We need an expression for $p$. 
+Since $\dd F = -S \dd T - p \dd V + \mu \dd N$:
+\[ p = -\pdc{F}{V}{N,T} = \frac{aN^2}{V^2} + NRT\frac{v_0}{V/N - b}\frac{1}{N v_0} \]
+\[ \boxed{ p = -\frac{aN^2}{V^2} + \frac{NRT}{V - Nb} }\]
+You should recognize this as the Van der Waals equation of state.
+\newpage{}
+}
+
+
+
+\smallskip\subp Find the isothermal compressibility
+$\kappa_T \equiv -\frac{1}{V}\pdc{V}{P}{T}$
+and the (isobaric) thermal expansion coefficient $\alpha \equiv \frac{1}{V} \pdc{V}{T}{P}$.
+\solution{\\
+The Van der Waals equation is cubic in $V$; 
+for simplicity, only take derivatives of $P$.
+\[ \pdc{p}{V}{T} = \frac{\partial}{\partial V} \left( \frac{NRT}{V - Nb}-\frac{aN^2}{V^2} \right)_T 
+                 = \frac{-NRT}{(V - Nb)^2} + \frac{2 aN^2}{V^3}  \]
+\[ \pdc{p}{T}{V} = \frac{\partial}{\partial T} \left( \frac{NRT}{V - Nb}-\frac{aN^2}{V^2} \right)_V
+                 = \frac{NR}{V-Nb} \]
+The quantity $\kappa_T$ can be evaluated directly:
+\[ \pdc{V}{p}{T} = \pdc{p}{V}{T}^{-1} 
+                 = \frac{1}{\frac{-NRT}{(V - Nb)^2} + \frac{2 aN^2}{V^3} }
+                 = \frac{V^3 (V-Nb)^2}{-NRTV^3 + 2aN^2 (V-Nb)^2} \]
+\[ \boxed{ \kappa_T = \frac{V^2 (V-Nb)^2}{NRTV^3 - 2aN^2 (V-Nb)^2} } \]
+For $\alpha$, we can get rid of the annoying constant $p$ with the triple product rule:
+\[ \pdc{V}{T}{p} = - \pdc{p}{T}{V} \pdc{V}{p}{T} \]
+\[ \alpha = \frac{1}{V} \pdc{V}{T}{p} 
+          = -\frac{1}{V} \left( \frac{NR}{V - Nb} \right)
+                         \left( \frac{V^3 (V-Nb)^2}{-NRTV^3 + 2aN^2 (V-Nb)^2} \right) \]
+\[ \boxed{ \alpha = \frac{NR V^2 (V-Nb)}{NRTV^3 - 2aN^2 (V-Nb)^2} } \]
+}
+
+
+
+
+%%%%%%%%%% Problem 3 %%%%%%%%%%
+%\newpage
+\bigskip
+\problem{15}
+Though we typically ignore interfacial effects in bulk systems,
+surface energy cannot be neglected in systems of modest size.
+We can quantify the excess surface free energy
+using the surface tension $\gamma$, which opposes increases in surface area.
+
+\smallskip\subp
+Treat the surface area $A$ as an additional extensive variable.
+Write down (i) the generalized differential form of internal energy
+with surface contributions, (ii)
+the corresponding form of the Helmholtz free energy,
+and (iii) the Gibbs-Duhem relation.
+\solution{ \\
+The surface energy term is positive because 
+increasing area will increase energy.
+\[ \boxed{ \text{(i) }\dd U = T\,\dd S - p\,\dd V + \mu\,\dd N + \gamma\,\dd A} \]
+The Legendre transform defines $F \equiv U - TS$. Naturally,
+\[ \boxed{\text{(ii) }\dd F = -S\,\dd T - p\,\dd V + \mu\,\dd N + \gamma\,\dd A} \]
+We have added the extensive-intensive variable pair $(A,\gamma)$.
+Deriving Euler's equation as we did in class gives
+$U = TS - pV + \mu N + \gamma A$. 
+Comparing the total differential of this expression to
+$\dd U$ as given in (i) yields the Gibbs-Duhem relation:
+\[ \boxed{\text{(iii) } S\,\dd T - V\,\dd p + N\,\dd \mu + A\,\dd \gamma = 0} \]
+}
+
+\smallskip\subp
+The entropy is now also a function of surface area, $A$.
+Write down the thermodynamic stability condition 
+corresponding to fluctuations in only the surface area.
+\solution{\\
+The stability condition requires that the entropy of a closed system
+is maximized with respect to fluctuations in the 
+extensive variables $(N,V,U,A)$. 
+\[\boxed{ \left.\frac{\partial^2 S(N,V,U,A)}{\partial A^2}\right|_{N,V,U} 
+        = -\pdc{(\gamma/T)}{A}{N.V,U} < 0 } \] 
+Note that one can also derive the stability condition by looking
+at the curvature of the free energy {\bf with respect to an extensive variable}.
+(Be careful here, e.g. the curvature of $F$ with respect to $T$,
+an intensive quantity, doesn't tell you anything!)
+\[\boxed{ \left.\frac{\partial^2 F(N,V,T,A)}{\partial A^2}\right|_{N,V,T} 
+        = \pdc{\gamma}{A}{N.V,T} > 0 } \] 
+}
+
+\smallskip\subp
+Estimate the order of magnitude of the interfacial tension
+between water and air at room temperature,
+and compare your estimate to the known value $\rm72\,mN/m$. 
+\solution{\\
+(Any reasonable solution within an order of magnitude was accepted) \\ \\
+Assume that in liquid water, on average, each water molecule
+forms four hydrogen bonds (tetrahedral geometry) 
+with energy $\approx-10\,\kT$.
+This yields $\approx-20\,\kT$ of hydrogen bond energy
+per molecule in the bulk ($4*10/2$, division corrects for double-counting).
+Water molecules at the interface cannot form hydrogen bonds with air;
+on average, these molecules should have $1/6$ less hydrogen
+bonds than those in the bulk
+(There are six directions corresponding to
+$(\pm x, \pm y, \pm z)$, and we are losing say, $+z$). 
+Therefore, the energy gain per water molecule at the surface is
+about $20/6 \approx 3.3\,\kT/\text{molecule}$. \\ \\
+Now we must estimate the area density of water molecules at the surface.
+Begin by finding the average distance between molecules 
+using the average volume per molecule:
+\[ \frac{1000\,\text{kg}}{\text{m}^3} \times 
+   \frac{1\,\text{m}^3}{10^{30}\,\text{\AA}^3} \times
+   \frac{1\,\text{mol}}{0.018\,\text{kg}} \times
+   \frac{6.022*10^{23}}{1\,\text{mol}} 
+   \approx 0.033\,\text{\AA}^{-3} \]
+\[ \left( \frac{1\,\text{\AA}^3}{0.033} \right)^{1/3} 
+   \approx 3\,\text{\AA} \]
+Therefore, the average surface area per molecule at the
+interface is $\approx 9\,\text{\AA}^2$. Thus:
+\[ \frac{3.3\,\kT}{\text{molecule}} \times
+   \frac{\text{molecule}}{9\,\text{\AA}^2} =
+   \frac{3.3*1.38*10^{-23}*300\,\text{J}}{9*10^{-20}\,\text{m}^2} =
+   0.15\,\text{J}/\text{m}^2 \]
+\[ \boxed{\gamma \approx 150\,\text{mN}/\text{m} } \]
+This value is pretty close!
+In reality, there are less than four hydrogen bonds per liquid water molecule
+(forming all possible hydrogen bonds makes ice).
+Our estimate is an upper bound.
+Interfacial tension also depends on entropic effects
+that were not treated in our approximation.
+}
+
+\smallskip\subp
+Consider a spherical droplet of radius $R$ immersed in
+a continuum media with pressure $P_0$.
+Minimize the Helmholtz free energy with respect to variations
+in only the radius $R$ (constant $T$ and $N$),
+and write down the equilibrium condition.
+\solution{ \\
+Remember that $\dd F = -S\,\dd T - p\,\dd V + \mu\,\dd N + \gamma\,\dd A$.
+Both $\dd V$ and $\dd A$ are coupled to $R$.
+\begin{align*}
+V = \frac{4\pi}{3} R^3 \qquad &\longrightarrow \qquad \dd V = 4\pi R^2 \dd R \\
+A = 4\pi R^2 \qquad &\longrightarrow \qquad \dd A = 8\pi R \dd R
+\end{align*}
+Assuming constant $N$ and $T$, we find the minimum of $F$
+by setting $\pdc{F}{R}{T,N} = 0$:
+\[ \pdc{F}{R}{T,N} = -p \pdc{V}{R}{T,N} + \gamma \pdc{A}{R}{T,N} 
+                   = -p (4\pi R^2) + \gamma (8\pi R) = 0 \]
+Thus, the equilibrium condition is:
+\[ \boxed{p \equiv P_\text{bubble} - P_0  = \frac{2\gamma}{R}} \]
+Note that $p$ is the pressure differential 
+between the inside and outside of the bubble.
+}
+
+\smallskip\subp 
+Using the equilibrium condition you obtained in part (d),
+calculate the pressure inside a spherical micro-bubble of air
+with radius $\rm5\,\mu m$ surrounded by water at pressure $P_0=1\,\rm bar$.
+\solution{\\
+\[ p \equiv P_\text{bubble} - P_0 = \frac{2 \gamma}{R} = 
+     \frac{2*0.072\,\text{N}/\text{m}}{5*10^{-6}\,\text{m}} \approx 
+      29\,\text{kPa} \]
+To check if $p$ is indeed positive,
+remember that $P_\text{bubble}$ must be larger than $P_0$ or else
+surface tension will drive the bubble to collapse ($A \rightarrow 0$). 
+\[ \boxed{P_\text{bubble} = 100\,\text{kPa} + 29\,\text{kPa} 
+                    \approx 129\,\text{kPa}} \]
+}
+
+%%%%%%%%%% Problem 4 %%%%%%%%%%
+%\bigskip
+%\rightline{({\sl Problem 4 on back of page})}
+%\vfil\eject
+%\medskip
+\bigskip\problem{20}
+In class, we derived stability conditions for a closed system
+with respect to fluctuations in 
+energy $U$, volume $V$, and the number of particles $N$.
+Though we only considered one fluctuation at a time, 
+multiple extensive quantities may fluctuate simultaneously.
+Consider the case where both energy and volume can fluctuate,
+but the number of particles is held constant (no $\delta N$ fluctuation).
+
+\smallskip\subp Find the $2\times2$ array for the second order differentials
+${\bf J} = \left.\frac{\partial^2 S(U,V)}{\partial(U,V)^2}\right|_N $.
+\solution{\\
+\begin{align*}
+\bf{J} 	&= \begin{bmatrix} 
+        \left(\frac{\partial^2S}{\partial V^2}\right)_{U,N} & 
+      	\frac{\partial}{\partial U}	\left(\left(\frac{\partial S}{\partial V}\right)_{U,N}\right)_{V,N} \\
+        \frac{\partial}{\partial V} \left(\left(\frac{\partial S}{\partial U}\right)_{V,N}\right)_{U,N} &
+        \left(\frac{\partial^2S}{\partial U^2}\right)_{V,N}
+        \end{bmatrix}
+\end{align*}
+}
+
+\smallskip\subp Express each entry of ${\bf J}$ in terms of
+the three canonical measurable properties, $\alpha$, $\kappa_T$, and $C_p$.
+\solution{\\
+All derivatives have constant $N$, 
+so $N$ will be omitted from the constant variables for simplicity. 
+Start with the differential form of entropy as a function of $U$ and $V$ 
+(from the first law):
+\begin{align*}
+  \dd S &= \left.\frac{\partial S}{\partial U}\right|_V \,\dd U
+         + \left.\frac{\partial S}{\partial V}\right|_U \,\dd V \\
+	&= \frac{1}{T}\,\dd U+\frac{p}{T}\,\dd V
+\end{align*}
+We can now fill in the first derivatives for the 
+four elements in the $\bf{J}$ matrix:
+\[ \bf{J} = \begin{bmatrix} 
+        \frac{\partial}{\partial V }\left(\frac{p}{T}\right)_{U} & 
+        \frac{\partial}{\partial U}\left(\frac{p}{T}\right)_{V} \\
+        \frac{\partial}{\partial V}\left(\frac{1}{T}\right)_{U} &
+        \frac{\partial}{\partial U }\left(\frac{1}{T}\right)_{V}
+        \end{bmatrix} \]
+We will also find it helpful to relate the constant volume heat capacity ($C_V$)
+and constant pressure heat capacity ($C_p$). 
+This is not necessary to solve this problem 
+(especially if the thermo-partial solver is used), 
+but it will simplify the math greatly:
+\[C_p = T\pdc{S}{T}{p} \quad C_v 
+      = T\pdc{S}{T}{V} \quad \mathrm{(by\ definition)} \]
+\[dS = \pdc{S}{p}{T}dp+\pdc{S}{T}{p}dT \]
+\[dS = -\pdc{V}{T}{p}dp+\frac{C_p}{T}dT\]
+\[dS = -\alpha V dp+\frac{C_p}{T}dT \]
+\[C_v = T\pdc{S}{T}{V} = T \left[-\alpha V \pdc{p}{T}{V}+\frac{C_p}{T}\pdc{T}{T}{V} \right] = T \left[\alpha V \frac{\pdc{V}{T}{p}}{\pdc{V}{p}{T}}+\frac{C_p}{T} \right] \]
+\[C_v =  -\frac{\alpha^2 VT}{\kappa_T}+C_p = \frac{C_p\kappa_T-\alpha^2VT}{\kappa_T} \]
+We must now calculate the second derivative for each entry:
+\begin{align*}
+	\left(\frac{\partial^2S}{\partial U^2}\right)_{V} = \frac{\partial}{\partial U }\left(\frac{p}{T}\right)_{V} 	
+	&= -\frac{1}{T^2}\pdc{T}{U}{V} = -\frac{1}{T^2C_V} = -\frac{\kappa_T}{T^2(C_p\kappa_T-\alpha^2VT)}
+\end{align*}
+From Schwarz theorem, we know that the order of differentiation doesn't matter for analytical functions, thus the cross terms are equal:
+\begin{align*} 
+  \pdc{\pdc{S}{V}{U}}{U}{V} 
+  &= \pdc{\pdc{S}{U}{V}}{V}{U} \\
+  &= \frac{\partial}{\partial V}\left(\frac{1}{T}\right)_{U} \\
+  &= -\frac{1}{T^2}\pdc{T}{V}{U} \\
+  &= \frac{1}{T^2}\frac{\pdc{U}{V}{T}}{\pdc{U}{T}{V}} \\
+  &= \frac{1}{T^2C_V}\pdc{U}{V}{T} = \frac{1}{T^2C_V}\left(T\pdc{S}{V}{T}-p\pdc{V}{V}{T} \right) \\
+  &= \frac{1}{T^2C_V}\left(T\pdc{p}{T}{V}-p \right) = \frac{1}{T^2C_V}\left(\frac{\alpha T}{\kappa_T}-p \right) \\ 
+  \pdc{\pdc{S}{V}{U}}{U}{V} &= \frac{1}{T^2}\frac{\alpha T-p\kappa_T}{(C_p\kappa_T-\alpha^2 VT)}
+\end{align*}
+The final derivative to be calculated is $\left(\frac{\partial^2S}{\partial V^2}\right)_{U,N}$:
+\begin{align*}
+	\left(\frac{\partial \frac{p}{T}}{\partial V }\right)_{U} 
+   	&= -\frac{p}{T^2}\pdc{T}{V}{U}+\frac{1}{T}\pdc{p}{V}{U}\\
+\end{align*}
+We know $\pdc{T}{V}{U}$ from our solution to the cross-differentials. Just need to calculate $\pdc{p}{V}{U}$:
+\begin{align*}
+	\pdc{p}{V}{U}
+    &= -\frac{\pdc{U}{V}{p}}{\pdc{U}{p}{V}}=-\frac{(T\pdc{S}{V}{p}-p)}{(T\pdc{S}{p}{V}-p\pdc{V}{p}{V})} \\
+    &= \frac{(T\pdc{P}{T}{S}-p)}{T\pdc{V}{T}{S}} = -\frac{(T\frac{-\pdc{S}{T}{p}}{\pdc{S}{p}{T}}-p)}{T\frac{\pdc{S}{T}{V}}{\pdc{S}{V}{T}}} \\
+    &= -\frac{(\frac{C_p}{\pdc{V}{T}{p}}-p)}{\frac{C_V}{\pdc{P}{T}{V}}} = -\frac{(\frac{C_p}{\alpha V}-p)}{\frac{C_V\kappa_T}{\alpha}} \\
+    &= -\frac{(C_p-p\alpha V)}{C_V \kappa_T V}
+\end{align*}
+\begin{align*}
+	\left(\frac{\partial \frac{p}{T}}{\partial V }\right)_{U}
+    &= -\frac{p}{T^2}\frac{\left(p\kappa_T-\alpha T\right)}{C_V \kappa_T}-\frac{1}{T}\frac{(C_p-p\alpha V)}{C_V \kappa_T V} \\
+    &= -\frac{p^2V\kappa_T - pV\alpha T +C_pT-pV\alpha T}{C_V\kappa_T T^2 V} \\
+    &= -\frac{p^2V\kappa_T - pV\alpha T +C_pT-pV\alpha T}{C_V\kappa_T T^2 V} \\
+    &= -\frac{p^2V\kappa_T - 2pV\alpha T +T(C_V +\frac{\alpha ^2TV}{\kappa_T})}{C_V\kappa_T T^2 V} \\
+    &= -\frac{T C_V + \frac{V}{\kappa_T}(p^2\kappa_T^2 - 2p\alpha T\kappa_T +\alpha^2T^2)}{C_V\kappa_T T^2 V} \\
+    &= -\frac{T C_V \kappa_T + V(p\kappa_T - \alpha T)^2}{C_V\kappa_T^2 T^2 V}
+    = -\frac{T (\kappa_T C_p - \alpha^2VT) + V(p\kappa_T - \alpha T)^2}{(\kappa_T C_p - \alpha^2VT)\kappa_T T^2 V}
+\end{align*}
+Note that in the above set of equations, we used the identity relating $C_p$ and $C_V$ to greatly simplify the math. Now we can plug all the answers back into the original matrix:
+\renewcommand\arraystretch{3}
+\[\boxed{\bf{J} 	= 
+		\begin{bmatrix} 
+          -\dfrac{T (\kappa_T C_p - \alpha^2VT) + V(p\kappa_T - \alpha T)^2}{(\kappa_T C_p - \alpha^2VT)\kappa_T T^2 V} & 
+          \dfrac{1}{T^2}\dfrac{\alpha T-p\kappa_T}{(C_p\kappa_T-\alpha^2 VT)} \\
+          \dfrac{1}{T^2}\dfrac{\alpha T-p\kappa_T}{(C_p\kappa_T-\alpha^2 VT)} &
+          -\dfrac{\kappa_T}{T^2(C_p\kappa_T-\alpha^2VT)}
+        \end{bmatrix}}
+\]
+\renewcommand\arraystretch{1} 
+\newpage }
+
+
+\smallskip\subp The stability condition demands that 
+the array $\bf J$ is negative-definite (negative curvature).
+A $2\times 2$ matrix is negative-definite if both of the following
+conditions are satisfied:
+\[ {\bf Tr}[{\bf J}] < 0 \qquad \text{and} \qquad {\bf Det}[{\bf J}] > 0 \]
+Here, {\bf Tr} and {\bf Det} are the 
+matrix trace and determinant, respectively.
+Find the generalized stability condition 
+when both $U$ and $V$ can fluctuate.
+\solution{
+\\
+We will find the determinant using $C_V$ rather than $C_p$ to simplify the math:
+\begin{align*}
+\renewcommand\arraystretch{3}
+\bf{Det[J]} 	
+		&>0 \\
+       \bf{Det}		
+        \begin{bmatrix} 
+          -\dfrac{T C_V \kappa_T + V(p\kappa_T - \alpha T)^2}{C_V\kappa_T^2 T^2 V} & 
+          \dfrac{1}{T^2}\dfrac{\alpha T-p\kappa_T}{C_V \kappa_T} \\
+          \dfrac{1}{T^2}\dfrac{\alpha T-p\kappa_T}{C_V \kappa_T} &
+          -\dfrac{1}{T^2C_V}
+        \end{bmatrix} &> 0 \\
+        \frac{T C_V \kappa_T + V(p\kappa_T - \alpha T)^2}{C_V^2\kappa_T^2 T^4 V}-\frac{(p\kappa_T-\alpha T)^2}{C_V^2 \kappa_T^2T^4} &> 0 \\
+        \frac{T C_V \kappa_T + V(p\kappa_T - \alpha T)^2-V(p\kappa_T-\alpha T)^2}{C_V^2\kappa_T^2 T^4 V} &> 0 \\
+        \frac{T C_V \kappa_T}{C_V^2\kappa_T^2 T^4 V} &> 0 \\
+        \frac{1}{C_V\kappa_T T^3 V} &> 0 \\
+        \mathrm{(Since\ T\ \&\ V\ >\ 0), } \quad \boxed{C_V\kappa_T > 0} \\
+        \boxed{C_p\kappa_T >\alpha^2TV}
+\end{align*}
+Now, let's take a look at the trace. 
+\begin{align*}
+-\frac{1}{C_V T^2} - \frac{C_V \kappa_T T + V(p\kappa_T - \alpha T)^2}
+                          {C_V \kappa_T^2 T^2 V} < 0 \\
+ \frac{\kappa_T V + C_V T + \kappa_T^{-1}V(p\kappa_T-\alpha T)^2}
+      {C_V \kappa_T T^2 V} > 0 
+\end{align*}
+The determinant requires that $C_V \kappa_T > 0$, and for this
+system we know that $V$ and $T$ are positive. 
+Thus, the denominator will not affect the sign of the expression:
+\[ \kappa_T V + C_V T + \kappa_T^{-1}V(p\kappa_T-\alpha T)^2 > 0 \]
+The determinant condition also requires that $C_V$ and $\kappa_T$
+have the same sign. By inspection, every term in the inequality
+must have the same sign (the squared term is always positive).
+Thus, the only possible way both conditions can be fulfilled is if:
+\[ \boxed{ C_V > 0 \qquad \text{and} \qquad \kappa_T > 0 }\]
+Side note: the corner terms in the trace summation 
+do not have the same units. Therefore, to be rigorous, 
+we should include a factor accounting for the conversion
+between the arbitrary choice of $U$ and $V$ units.
+Let $A > 0$ be this conversion factor:
+\begin{align*}
+-\frac{A}{C_V T^2} - \frac{C_V \kappa_T T + V(p\kappa_T - \alpha T)^2}
+                          {C_V \kappa_T^2 T^2 V} < 0 \\
+A \kappa_T V + C_V T + \kappa_T^{-1}V(p\kappa_T-\alpha T)^2 > 0
+\end{align*}
+Since unit conversion doesn't change signs, it is evident
+that mismatched units do not make a difference for this problem.
+The terms in the summation are guaranteed to be the same sign,
+regardless of scaling, because of the determinant condition.
+}
+
+
+\iffalse
+\bigskip
+\problem{5}
+%{\sl Le Chatlier's principle}.
+We have seen in class that the isobaric heat capacity
+$C_p \equiv T\! \left.\frac{\partial S}{\partial T}\right|_p$
+is always greater than the isochoric heat capacity
+$C_V \equiv T\! \left.\frac{\partial S}{\partial T}\right|_V$.
+This is not coincidental --
+Pressure ($p$) and volume ($V$) are conjugate variables,
+and the stability condition demands that
+$\frac{\partial p}{\partial V} < 0$.
+It can be shown that the partials with
+intensive quantities (e.g. $p$) fixed are always greater than those with
+extensive quantities (e.g. $V$) fixed.
+Using the shape (concave down) of $S(U,V,N)$,
+illustrate graphically why $C_p > C_V$. 
+\fi

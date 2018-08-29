@@ -1,0 +1,527 @@
+\def\img{{\rm i}}
+\def\ave#1{\left\langle\psi(t) \lvert {\bf #1} \rvert \psi(t)\right\rangle}
+\def\comm#1#2{[{\bf #1}, {\bf #2}]}
+
+
+%%%%%% PROBLEM 1 %%%%%%
+\problem{5}
+Let's pretend the electron-proton distance $a$ 
+inside a hydrogen atom can be measured.
+The potential energy of an electron is primarily electrostatic 
+and of order $V \simeq \frac{e^2}{4\pi \epsilon_0 a}$,
+where $e$ is the elementary charge and 
+$\epsilon_0$ the vacuum permittivity.
+The electron kinetic energy
+is approximately $K \simeq \frac{\hbar^2}{2ma^2}$,
+where $m$ is the mass of electron.
+Setting $V \simeq K$ to balance the two terms
+allows us to estimate $a$,
+the range of electron motion. \\
+
+\noindent Calculate $a$, and compare your value to the
+known hydrogen radius $r_{\rm\scriptscriptstyle H} = 0.53\,$\AA.
+Additionally, calculate the gravitational potential energy 
+between the proton and electron using
+$E = \frac{G m m_{\rm p}}{a}$,
+where $G$ is the gravitational constant and $m_{\rm p}$ the proton mass.
+Compare $E$ to $V$, and convince yourself that $E$ is negligible.
+
+\solution{
+Begin by estimating $a$ using the condition $K = V$:
+\[ \frac{e^2}{4 \pi \epsilon_0 a} \approx 
+   \frac{\hbar^2}{2m_\text{e} a^2} \]
+\begin{align*}
+  a &= \frac{4 \pi \epsilon_0 \hbar^2}{2 m_\text{e} e^2} 
+     = \frac{\epsilon_0 h^2}{2\pi m_\text{e} e^2} \\
+    &= \frac{ (8.854 \times 10^{-12}\,\text{C$^2$ J$^{-1}$ m$^{-1}$})  
+              (6.626 \times 10^{-34}\,\text{J s})^2 } 
+            {2\pi (9.11  \times 10^{-31}\,\text{kg})
+                  (1.602 \times 10^{-19}\,\text{C})^2 } \\
+    &= 2.65 \times 10^{-11}\,\text{m} = \fbox{0.26\,\text{\AA}} 
+\end{align*}  
+Now compare the ratio of gravitational energy to electrostatic energy:
+\begin{align*}
+  \frac{E}{V} &= \left( \frac{G m_{\rm e} m_{\rm p} }{a}  \right) 
+                 \left( \frac{4 \pi \epsilon_0 a}{e^2}    \right) 
+               = \frac{4\pi G m_{\rm e} m_{\rm p} \epsilon_0}{e^2} \\ 
+              &= \frac{4\pi (6.674 \times 10^{-11}\,\text{J m kg$^{-2}$})
+                            (9.11 \times 10^{-31}\,\text{kg}) 
+                            (1.673 \times 10^{-27}\,\text{kg}) 
+                            (8.854 \times 10^{-12}\,
+                               \text{C$^2$ J$^{-1}$ m$^{-1}$ }) }
+                      {     (1.602 \times 10^{-19}\,\text{C})^2 } \\
+         &\approx 4.4 \times 10^{-40}
+\end{align*}
+\[ \boxed{ \frac{E}{V} = 
+           \frac{\text{ Gravitational Energy Scale}}
+                {\text{ Electrostatic Energy Scale}} 
+           \approx 4 \times 10^{-40}  }\]
+\newpage{}
+}
+
+
+
+
+
+%%%%%% PROBLEM 2 %%%%%%
+\bigskip \problem{5}
+The correspondence between macrostates and microstates
+depends on the definition of the macrostate.
+To illustrate this point, consider a {\sl system}
+where we flip $N$ coins simultaneously, 
+and each coin has an equal (50\%) chance of being ``heads" or ``tails".
+Let us define the ``macrostates" of this system as:
+\begin{enumerate}
+\item $\{f_1, f_2, \ldots, f_N \}$ where $f_i$ is the result 
+      (either Heads or Tails) of the $i^{\text{th}}$ coin. 
+\item $\{n\}$, where $0 \leq n \leq N$ is the number of heads 
+      among the $N$ flipped coins. 
+\end{enumerate}
+
+\noindent For each definition,
+how many macrostates and microstates 
+does the system have?
+Write a general expression for the number of microstates
+corresponding to each macrostate in each case
+(i.e. what are $\Omega(\{f_1, f_2, \ldots, f_N \})$ and $\Omega(n)$?).
+
+\solution{\noindent
+Regardless of the definition of macrostate,
+this system will have $2^N$ total microstates
+corresponding to the two possible outcomes
+for each of $N$ independent coin flips. 
+} 
+
+\solution{
+In (a), every microstate maps to a unique macrostate.
+Therefore, there are also $2^N$ macrostates.
+Clearly, $\Omega(\{f_1, f_2, \ldots, f_N \}) = 1$.
+}
+
+\solution{
+In (b), there are $N+1$ macrostates corresponding
+to the range of $n$. 
+The number of heads is given by the binomial distribution:
+\[ \Omega(n) = \binom{N}{n} \equiv \frac{N!}{n! (N-n)!} \]
+\newpage{}
+} 
+
+
+
+
+
+%%%%%% PROBLEM 3 %%%%%%
+\bigskip \problem{5}
+Newton's equation of motion conserves total energy $E = K + V$ 
+if $V$ does not depend on time explicitly:
+\[ \frac{{\rm d} E}{{\rm d}t} = 0\quad \text{if} \quad V = V(x) \]
+Show that if $V$ has explicit time dependence
+-- that is, $V = V(x,t)$ --
+the following is true:
+\[\frac{{\rm d} E}{{\rm d}t} = \frac{\partial V(x,t)}{\partial t}\]
+
+\solution{
+Key concept: How are partial and total derivatives different?
+\begin{align*} 
+   \frac{{\rm d}E}{{\rm d}t} 
+      &= \frac{{\rm d}K(\dot{x})}{{\rm d}t}   
+       + \frac{{\rm d}V(x,t)}{{\rm d}t}
+       = \frac{{\rm d}}{{\rm d}t} 
+         \left[ \frac{1}{2}m  \left( \frac{{\rm d}x}{{\rm d}t} \right)^2 \right]
+       + \frac{\partial V(x,t)}{\partial x} \frac{{\rm d} x}{{\rm d} t}
+       + \frac{\partial V(x,t)}{\partial t} \frac{{\rm d} t}{{\rm d} t} \\
+      &= \left( \frac{1}{2}m \right) \left(2\frac{{\rm d}x}{{\rm d}t} \right)
+         \left( \frac{{\rm d}}{{\rm d}t} \frac{{\rm d}x}{{\rm d}t} \right)
+       + \frac{\partial V(x,t)}{\partial x} \frac{{\rm d} x}{{\rm d} t} 
+       + \frac{\partial V(x,t)}{\partial t} \\
+      &= \frac{{\rm d}x}{{\rm d}t} 
+         \left[ \frac{\partial V(x,t)}{\partial x} 
+            + m \frac{{\rm d}^2 x}{{\rm d}t^2} \right]
+       + \frac{\partial V(x,t)}{\partial t} \\
+      &= \frac{{\rm d}x}{{\rm d}t} \left[ -F + ma \right] 
+       + \frac{\partial V(x,t)}{\partial t} \\ 
+      &= 0 + \frac{\partial V(x,t)}{\partial t}
+  \end{align*} 
+  \[ \boxed{\frac{{\rm d}E}{{\rm d}t} = 
+            \frac{\partial V(x,t)}{\partial t}} \]
+{\bf Note:} $x(t)$ is a function of $t$. Here are some common mistakes:
+\[ \frac{{\rm d} V(x)}{{\rm d} t} = 
+   \frac{\partial V(x)}{\partial x} \frac{{\rm d} x}{{\rm d} t} 
+   \neq 0 \]
+\[ \frac{{\rm d} K}{{\rm d} t} \neq 0 \]
+\newpage{}
+} 
+
+
+
+
+%%%%%% PROBLEM 4 %%%%%%
+\bigskip \problem{15}
+This exercise will demonstrate the connection between 
+quantum and classical mechanics.
+Recall that in quantum mechanics, the observation corresponding
+to operator $\bf O$ is defined by $o(t) = \ave{O}$. 
+Additionally, the adjoint $\bf{H}^\dag$ of operator $\bf{H}$ is defined by 
+$\langle \bf{H}^\dag u | v \rangle \equiv \langle u | \bf{H} v \rangle$.
+This definition implies the following:
+\[ (\bf{A} \bf{B})^\dag = \bf{B}^\dag \bf{A}^\dag \]
+\[ \langle u | \bf{A} \bf{B} | v \rangle 
+ = \langle \bf{A}^\dag u | \bf{B} | v \rangle 
+ = \langle \bf{B}^\dag \bf{A}^\dag u | v \rangle \]
+You may find these identities helpful 
+when completing the following derivations. \\
+
+\smallskip\subp
+Given Schr\"odinger's equation,
+$\img \hbar \frac{\partial}{\partial t} \psi(t) = {\bf H} \psi(t)$,
+and that the Hamiltonian $\bf{H}$ is Hermitian (${\bf H}^\dag={\bf H}$), 
+show that $\dot o(t) = \frac{\partial o(t)}{\partial t} = \frac{1}{\img\hbar} \ave{\comm O H}$.
+The commutator is defined 
+${\comm O H} \equiv {\bf OH - HO}$, as usual.
+Since $o(t)$ corresponds to the classical observable,
+this essentially says that the evolution of classical observable
+is given by the the expectation value of commutator $\comm O H$.
+It follows that the quantity commuting with $\bf H$ is conserved.
+
+\solution{
+One way to show this property is to directly differentiate $o(t)$:
+\begin{align*}
+  \dot o(t) &= \frac{\partial}{\partial t} \ave{O} \\
+            &= \langle \dot{\psi}(t) | {\bf O} | \psi(t) \rangle 
+             + \langle \psi(t) | \dot{\bf O} | \psi(t) \rangle 
+             + \langle \psi(t) | {\bf O} | \dot{\psi} (t) \rangle \\
+            &= \langle \frac{1}{\img \hbar} {\bf H} \psi(t) | 
+                       {\bf O} | \psi(t) \rangle 
+             + 0
+             + \langle \psi(t) | {\bf O} | 
+                       \frac{1}{\img \hbar} {\bf H} \psi(t) \rangle \\
+           &= \frac{-1}{\img \hbar} \langle \psi(t) | {\bf H^\dag O} | \psi(t) \rangle 
+            + \frac{ 1}{\img \hbar} \langle \psi(t) | {\bf OH} | \psi(t) \rangle \\
+           &= \frac{1}{\img \hbar} \ave{OH - HO} 
+            = \boxed{\frac{1}{\img \hbar} \ave{\comm O H}}
+\end{align*}
+}
+
+\smallskip\subp
+Show that the commuting relation between the position operator $\bf x$
+and momentum operator ${\bf p} = -\img \hbar \frac{\partial}{\partial x}$
+is ${\comm x p} = \img \hbar$.
+For a generic Hamiltonian, ${\bf H} = {\bf p}^2 / (2m) + V({\bf x})$,
+show that
+$$ \dot{x}(t) = \frac{1}{m} \ave{p} ,$$
+which is consistent with classical definition for momentum, $ p = m \dot x$.
+{\bf Hint}: You may find it necessary to use
+$\comm{A}{BC} = \comm{A}{B}{\bf C} + {\bf B}\comm{A}{C}$.
+
+\solution{
+First, evaluate the effect of the commutator. 
+Remember $\psi = \psi({\bf x},t)$.
+\begin{align*}
+  {\comm x p} | \psi \rangle &= {\bf xp} | \psi \rangle - {\bf px} | \psi \rangle \\
+       &= ({\bf x})(-\img \hbar) \frac{\partial}{\partial {\bf x}} \psi
+        - (-\img \hbar) \frac{\partial}{\partial {\bf x}} ({\bf x} \psi) \\
+       &= -\img \hbar {\bf x} \frac{\partial}{\partial {\bf x}} \psi 
+          +\img \hbar {\bf x} \frac{\partial}{\partial {\bf x}} \psi 
+          +\img \hbar \frac{\partial {\bf x}}{\partial {\bf x}} \psi \\
+       &= \boxed{\img \hbar | \psi \rangle}
+\end{align*}
+Now, we can combine the result from part (a) with this result to show:
+\begin{align*}
+  \dot{x}(t) &= \frac{1}{\img \hbar} \ave{\comm x H} 
+         = \frac{1}{\img \hbar} 
+           \ave{\comm{x}{ {\bf p}^2/{\rm 2}{\it m} + \bf{V}}} \\
+        &= \frac{1}{\img 2m \hbar} \ave{\comm{x}{pp}} 
+         + \frac{1}{\img \hbar} \ave{\comm x V} \\
+        &= \frac{1}{\img 2m \hbar} \ave{ \comm{x}{p} p + p \comm{x}{p}} + 0 \\
+        &= \frac{1}{\img 2m \hbar} \ave{ {\rm 2} \img \hbar p} \\
+        &= \frac{1}{m} {\ave p}
+\end{align*}
+It is easy to show $\comm x V$ is zero,
+since ${\bf x} = {\bf x}$ and ${\bf V} = V({\bf x})$. 
+Multiplication is commutative.
+The expression $\dot{x}(t) = \frac{1}{m} {\ave p}$ is
+equivalent to:
+\[ \boxed{p = m \dot{x}} \]
+} 
+
+\smallskip\subp
+Using these results, demonstrate that Newton's second law
+is consistent with quantum mechanics -- that is:
+\[ m \ddot{x}(t) = - \ave{\hbox{$V'({\bf x})$}} \]
+
+\solution{
+Begin by taking the time derivative of momentum, $p(t) = m \dot{x}(t)$:
+\begin{align*}
+ \dot{p}(t) &= m \ddot{x}(t) = \frac{1}{\img \hbar} \ave{\comm p H} 
+    = \frac{1}{\img \hbar} \ave{\comm{p}{ {\bf p}^2/{\rm 2}{\it m} + \bf{V}}} \\
+   &= \frac{1}{\img 2m \hbar} \ave{\comm{p}{pp}} 
+      + \frac{1}{\img \hbar} \ave{\comm p V} \\
+   &= \frac{1}{\img 2m \hbar} \ave{ \comm{p}{p} p + p \comm{p}{p}} 
+      + \frac{1}{\img \hbar} \ave{\comm p V} \\
+   &= 0 + \frac{1}{\img \hbar} \ave{\comm p V} \\
+\end{align*}
+Above, we have made use of ${\comm p p} = 0$. 
+Proceed by evaluating $\comm p V$:
+\begin{align*}
+  {\comm p V} | \psi \rangle &= {\bf pV} | \psi \rangle - {\bf Vp} | \psi \rangle \\
+       &= (-\img \hbar) \frac{\partial}{\partial {\bf x}} ( V({\bf x}) \psi) 
+        - ( V({\bf x}) )(-\img \hbar) \frac{\partial}{\partial {\bf x}} \psi \\
+       &= -\img \hbar V({\bf x}) \frac{\partial}{\partial {\bf x}} \psi 
+          -\img \hbar \frac{\partial V({\bf x})}{\partial {\bf x}} \psi
+          +\img \hbar V({\bf x}) \frac{\partial}{\partial {\bf x}} \psi \\
+       &= -\img \hbar V'({\bf x}) | \psi \rangle
+\end{align*}
+We have shown that ${\comm p V} = -\img \hbar V'(\bf x)$. 
+\begin{align*}
+  m \ddot{x}(t) &= \frac{1}{\img \hbar} \ave{\comm p V} 
+                 = \frac{-\img \hbar}{\img \hbar} \ave{ V' (\bf x)} \\
+                &= - \ave{V' (\bf x)}
+\end{align*}
+If we interpret $-\ave{V' (\bf x)} = F$, we have shown that:
+\[ \boxed{F = m a} \]
+\newpage{}
+}
+
+
+
+%%%%%% PROBLEM 5 %%%%%%
+\bigskip \problem{15} 
+The {\sl ergodic assumption} is central
+to the formulation of equilibrium statistical mechanics.
+This assumption states that, at equilibrium,
+the time-average of a system is equivalent
+to an average over that system's phase space
+(i.e. the set of possible states for the system).
+This imposes requirements on how the system evolves in time.
+We will investigate one of these requirements more closely 
+in the problems below.
+
+\smallskip\subp
+Consider 1~mole of ideal Helium gas at 300K,
+confined in a cubic box with 1~m walls.
+The energy levels of this system are well-approximated
+by the 3D particle in a box. 
+The number of distinct energy states with $\epsilon < E$ 
+for this model is given by the expression:
+$$ \Phi(E) = \frac{\pi}{6} 
+   \left( \frac{8 m L^2 E}{h^2} \right)^{3/2} $$
+Calculate $\Phi(\kT)$.
+How does $\Phi(\kT)$ compare to the
+number of particles in this system?
+\solution{
+\begin{align*}
+   m &= \frac{4\,\text{g}}{\text{mol}} \times 
+       \frac{1\,\text{mol}}{6.022 * 10^{23}} 
+       \times \frac{1\,\text{kg}}{1000\,\text{g}}  
+     = 6.6 * 10^{-27}\,\text{kg} \\
+  \Phi(\kT) &= \frac{\pi}{6} 
+        \left( \frac{8*(6.6*10^{-27}\,\text{kg})*
+                       (1\,\text{m})^2*
+                       (1.38*10^{-23}*300\,\text{J})}
+                    {(6.626*10^{-34}\,\text{J s})^2} \right)^{3/2} \\
+            &= \boxed{5.8 * 10^{30}}
+\end{align*}
+$\Phi(\kT)$ is about seven orders of magnitude larger than 
+Avogadro's number. This indicates there are $10^7$
+more energy states available to Helium atoms
+than there are atoms in the box.
+}
+
+\smallskip\subp
+Assume He atoms are restricted to these $\Phi(\kT)$ energy levels,
+and that no two atoms share an energy state.
+This allows us to approximate the size of the
+\textbf{system} phase space with $\mathcal{W}$,
+the number of ways $N$ atoms 
+can be placed into $\Phi(\kT)$ energy states
+such that there is no double occupancy.
+Estimate $\ln \mathcal{W}$.
+Based on part (a), is this distinct-state approximation reasonable?
+\solution{
+\begin{align*}
+\mathcal{W} &= \binom{\Phi}{n} = \frac{\Phi!}{n!(\Phi-n)!} \\
+\ln \mathcal{W} &\approx \Phi \ln \Phi - n \ln n - 
+                         (\Phi - n) \ln (\Phi - n) + \Phi - n 
+                         - (\Phi - n) \\ 
+           &\approx n \ln \left( \frac{\Phi}{n} \right) 
+                 = (6*10^{23})*\ln 
+                   \left( \frac{6*10^{30}}{6*10^{23}} \right) 
+            \approx \boxed{10^{25}}
+\end{align*}
+Clearly $\mathcal{W}$ is an enormous number. 
+The assumption of distinct states is reasonable here
+because there is roughly $10^7$ states per He atom,
+so the chance of simultaneous occupation is vanishingly small.
+Bonus: this kind of conclusion is only really valid
+when particles are indistinguishable, 
+otherwise the probability of particles being in
+all different states approaches zero and not one
+in the large $(\Phi/n)$ limit. 
+}
+
+\smallskip\subp
+In an ideal gas, energy can only be exchanged
+by perfectly elastic collisions between molecules.
+The collision frequency can be taken to define
+a crude `state-switching' timescale, $\tau = 1/f_\text{coll}$.
+For simplicity, assume that after time $t=0$,
+the system never enters the same state twice 
+(i.e. we magically sample the phase-space $\mathcal{W}$ 
+one state at a time). \\ \\
+Estimate $f_\text{coll}$, the average number of collisions
+in the box per second.
+Using $f_\text{coll}$, provide a lower-bound estimate
+for the time it would take for this system to sample
+the full phase space $\mathcal{W}$. 
+You may find the expression for mean free path of an ideal gas useful:
+\[ \lambda = \frac{V}{\sqrt{2} \pi d^2 N} \]
+\solution{
+The collision frequency should depend on $\lambda$ and $\bar{v}$.
+For $N$ molecules of He gas:
+\[ f_\text{coll} = \frac{N \bar{v}}{\lambda} \]
+The factor $N$ is needed because we care about
+\textbf{any} collision, not just those of a single particle.
+We can estimate $d$ for He as
+twice its Van der Waals radius, 
+$2 \times 140\,\text{pm} = 2.8*10^{-10}\,\text{m}$.
+\begin{align*}
+\bar{v} &= \sqrt{ \frac{3 \kT}{m} } 
+         = \sqrt{ \frac{3 * 1.38 * 10^{-23}* 300\,\text{J}}
+                       {6.6*10^{-27}\,\text{kg}} } 
+         = 1370\,\text{m/s} \\
+\lambda &= \frac{V}{\sqrt{2} \pi d^2 N} 
+         = \frac{1\,\text{m}^3}{\sqrt{2}\pi * 
+                 (2.8*10^{-10}\,\text{m})^2*6.022*10^{23}} 
+         = 4.8*10^{-6}\,\text{m} \\
+f_\text{coll} &= \frac{N \bar{v}}{\lambda} 
+               = \frac{6.022*10^{23} * 1370\,\text{m/s}}
+                      {4.8*10^{-6}\,\text{m}}
+               = \boxed{1.7*10^{32} \,\text{s}^{-1}} 
+\end{align*}
+This can be interpreted as the system sampling on the order
+of $10^{32}$ states per second. 
+Now, we must estimate the order of magnitude of $\mathcal{W}$:
+\begin{align*} 
+\ln \mathcal{W} &= \frac{\log_{10} \mathcal{W}}{\log_{10} \text{e}} 
+           \approx 10^{25} \\
+    \mathcal{W} &\approx 10^{\log_{10} \text{e} * 10^{25}} 
+                 \approx \text{e} *10^{10^{25}} 
+                 \approx 10^{10^{25}}
+\end{align*}
+The timescale for sampling the entire phase space is given by:
+\[ \tau = \frac{\mathcal{W}}{f_\text{coll}} \approx
+          \frac{10^{10^{25}}}{1.7*10^{32}\,\text{s}^{-1}} 
+          \approx 10^{10^{25} - 32}\,\text{s} 
+          \approx 10^{10^{25}}\,\text{s} \]
+For reference, the age of the universe is about 
+$4*10^{17}\,\text{s}$. 
+Therefore, this system will never be able to 
+explore its full phase space, $\mathcal{W}$,
+so defining a timescale for exploration is pointless.
+}
+
+
+\smallskip\subp
+Experimentally, helium gas equilibrates on a millisecond timescale
+in response to changes in volume, temperature, and pressure.
+Helium obeys the ideal gas law almost exactly;
+this is a strong indication that the system is ergodic --
+however, your answer for part (c) should make it apparent
+that the system samples a vanishingly small fraction of 
+its phase space $\mathcal{W}$ 
+within physically reasonable observation timescales.
+At first glance, you may wonder how a system can 
+possibly equilibrate after sampling such an 
+infinitesimal amount of its phase space. \\ \\
+A more complete statement of
+the {\sl ergodic hypothesis} states that
+``the time spent by an equilibrium system in any region of phase space
+must be {\bf proportional} to that region's phase-volume''.
+Bearing this in mind, 
+can you rationalize this apparent contradiction? 
+What does this statement mean in the context of this system? 
+\smallskip
+\solution{ \\
+In our system,
+$\mathcal{W}$ is the phase volume,
+and the sampling of states over time
+could be considered a $3N$-dimensional random walk
+(there are $3N$ degrees of freedom for an ideal gas)
+in that phase volume.
+The condition given in the problem statement
+requires that the sample spends time in each 
+region of $\mathcal{W}$ proportional to that region's phase volume.
+This requires that the system must {\bf representatively}
+sample $\mathcal{W}$, but not 
+necessarily sample {\bf all} of it. \\ \\
+Consider the notion of a phase `distance',
+which defines the amount of time it takes to get from
+one state to another.
+For an ideal gas, although the phase volume
+grows hyper-exponentially,
+the phase `distance' is always short, 
+because the mechanism of sampling is random,
+elastic collisions.
+This can be seen in part (c), 
+where we found the collision frequency to be 
+on the order of $10^{30}\,\text{s}^{-1}$.
+Given any two {\bf system} energy states,
+one could imagine there exists a precise
+set of collisions that could bring one state
+to the other extremely quickly,
+even if the probability for that sequence of collisions
+is vanishingly small.
+As a counterexample, consider glass -
+in such a system, the kinetics are so slow that
+there are sets of states that cannot be sampled
+within seconds -- or even years -- 
+no matter which path we use. \\ \\
+Because the phase `distance' of an ideal gas 
+is so short, it can sample the full phase
+space {\bf representatively}, as it can freely
+access all states even if it has a vanishingly
+small probability of hitting particular ones 
+(because there's such an astronomically large 
+number of states). 
+Note that in practice, ergodicity can really 
+only be proven for certain kinds of
+mathematical constructions, i.e.
+we must rely on our intuition and
+comparison of theoretical and experimental results
+for physical systems. 
+}
+
+
+\iffalse % Maybe some other time
+\smallskip\subp 
+Let us briefly switch gears to the realm of biology.
+(temp after this point - cite McLeish paper).
+Instead of a box of gas, let us take a genome 
+as our system.
+In this analogy, one could consider a base pair a `He atom',
+the identity of the base pair (A,T,C,G) to be the energy level,
+and the genotype and phenotype encoded to represent
+microstates and macrostates of the system.
+How many `energy levels' are available to each base pair?
+How big is the state space for the human and bacterial genomes?
+
+\smallskip\subp 
+We can estimate the ``collision time" for this system
+by looking at the timescale of a generation for the organism of interest.
+Give your best estimate for the ``collision time'' -- that is, the
+evolutionary timescale --
+for humans and bacteria.
+Given a population of (decide size, a million?),
+and assuming there is that many changes of state per time scale,
+how long (OOM) would it take to explore the entire genomic space
+if no states are repeated and all states are viable?
+
+\smallskip\subp
+Introduce the ergodic ratio. We can estimate the ergodic time by
+computing that maximum genetic ``distance" between two genomes. 
+What is the ergodic timescale for the human and bacterial genome?
+How does this compare to the exploration timescales?
+What is the ergodic ratio of the Helium gas? The Bacterial genome?
+the human genome?
+\fi
+

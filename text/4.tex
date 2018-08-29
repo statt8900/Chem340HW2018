@@ -1,0 +1,705 @@
+\problem{5}
+The Boltzmann distribution can be derived from 
+the entropy of a closed system.
+The fundamental ansatz of statistical mechanics
+is that the probability of observing a macrostate is
+proportional to the number of corresponding microstates, i.e.:
+\[ p_j^{(\rm universe)} \propto e^{S_j^{\rm (universe)}/\kB} \]
+We use the subscript $j$ to indicate the entropy (number of microstates)
+corresponding to the energy level $E_j$. 
+Let the universe be a closed system consisting of two subsystems,
+the system of interest and a surrounding reservoir.
+The two subsystems are in thermal equilibrium.
+Using the condition above, 
+show that the probability of observing the system of interest
+in a state with energy $E_j$ is proportional to:
+\[ p^{(\rm system)}_j \propto e^{-(E_j^{\rm (sys)} - T S_j^{\rm (sys)}) / (\kB T)}
+                            = e^{- F_j^{\rm (sys)} / (\kT)} , \]
+{\bf Hint:} You may find it useful to work 
+relative to an arbitrary reference state $E_0$. 
+Note that $e^{S_j - S_0} \propto e^{S_j}$.
+\solution{ \\
+As stated in the hint, we can write the entropy of the universe relative to some
+relative arbitrary state $S_0$:
+\[ p_j^{\rm (universe)} \propto e^{S_j^{\rm (universe)}/\kB} 
+                        \propto e^{\Delta S_j^{\rm (universe)}/\kB} \]
+Setting a reference just scales the exponential by a constant factor,
+which gets canceled out by normalization (i.e. the partition function).
+\[ e^{\Delta S_j^{\rm (universe)}} = e^{S_j^{\rm (universe)}-S_0}
+  = e^{-S_0} e^{S_j^{\rm (universe)}} = C e^{S_j^{\rm (universe)}} \]
+Divide the entropy into a system term and reservoir term
+(Implicitly, $S_0 = S_0^{\rm (universe)} = S_0^{\rm (sys)} + S_0^{\rm (res)}$). 
+\[ e^{\Delta S_j^{\rm (universe)}/\kB} 
+ = e^{\Delta S_j^{\rm (sys)}/\kB + \Delta S_j^{\rm (res)}/\kB} \]
+As usual, we will assume the reservoir is large enough such that
+$\Delta S_j^{\rm (res)} = \Delta E_j^{\rm (res)}/T$.
+\[ e^{\Delta S_j^{\rm (sys)}/\kB + \Delta S_j^{\rm (res)}/\kB} 
+ = e^{\Delta S_j^{\rm (sys)}/\kB + \Delta E_j^{\rm (res)}/(\kT)} \]
+The universe, of course, is closed (constant $E$). 
+Therefore, $\Delta E_j^{\rm (res)} = -\Delta E_j^{\rm (sys)}$.
+\[ e^{\Delta S_j^{\rm (sys)}/\kB + \Delta E_j^{\rm (res)}/(\kT)}
+ = e^{\Delta S_j^{\rm (sys)}/\kB - \Delta E_j^{\rm (sys)}/(\kT)} 
+ \propto e^{-(E_j^{\rm (sys)} - T S_j^{\rm (sys)})/(\kT)} \]
+This is precisely what we wanted to show.
+We have shown, with the maximum entropy condition, that
+\[ \boxed{ p^{\rm (sys)}_j = e^{- F_j^{\rm (sys)} / (\kT)} } \]
+\newpage
+}
+
+
+\bigskip
+\problem{15}
+Consider a system of $N$ particles coupled
+to external reservoir such that the pressure~$p$ 
+and temperature~$T$ are held constant.
+We would like to determine the probability of different
+macrostates $(N,p,T)$.
+
+\smallskip \subp
+Energy and volume both fluctuate in this system.
+Find the probability distribution function $p_j$
+using the approach discussed in class.
+\solution{\\
+We would like to maximize entropy 
+($S = -\kB \sum_i p_i \ln p_i$)
+subject to the following three constraints 
+using the Lagrange multipliers
+$\lambda_0$, $\lambda_1$, and $\lambda_2$.
+\begin{align*}
+ \lambda_0 ~ &: ~ \sum_i p_i = 1 \\
+ \lambda_1 ~ &: ~ \sum_i p_i E_i = U  \\
+ \lambda_2 ~ &: ~ \sum_i p_i V_i = V 
+\end{align*}
+Here, $U$ and $V$ are constants
+constraining the average energy and volume.
+In the following, subscripted $p_j$ denotes 
+probability, and $p$ without a subscript 
+denotes pressure (sorry!).
+\begin{align*}
+    \frac{\partial}{\partial p_j} 
+    &\left[ S - \lambda_0 \left( \sum_j p_j - 1 \right) 
+             - \lambda_1 \left( \sum_j p_j E_j - U \right) 
+             - \lambda_2 \left( \sum_j p_j V_j - V \right) \right] \\ \\
+  = &\left[ -\kB (1 + \ln p_j) - \lambda_0
+           -\lambda_1 E_j - \lambda_2 V_j \right] 
+  = 0 \\
+\end{align*} 
+Rearrange the expression to get:
+\[ p_j = \exp \left( - \frac{\lambda_0 - \kB 
+       + \lambda_1 E_j + \lambda_2 V_j}{\kB} \right) 
+= \exp \left( 1 - \frac{\lambda_0}{\kB} \right) 
+  \exp \left( -\frac{\lambda_1 E_j + \lambda_2 V_j}{\kB} \right) \]
+To assign values to $\lambda_1$ and $\lambda_2$, 
+note $S = -\kB \sum_i p_i \ln p_i = -\kB \ave{\ln p_i}$:
+\[ S = -\kB \ave{  (1 - \lambda_0/\kB ) 
+     - \frac{\lambda_1 E_j + \lambda_2 V_j}{\kB} } 
+     = ({\rm constant}) + \lambda_1 \ave{E} + \lambda_2 \ave{V} \]
+We can interpret $\ave{E}$ and $\ave{V}$ as the
+classical thermodynamic $U$ and $V$:
+\[ \dd S = \lambda_1\,\dd U + \lambda_2\,\dd V \]
+Given that $\dd U = T\,\dd S - p\,\dd V$,
+It is clear that $\lambda_1 = 1/T$ and
+$\lambda_2 = p/T$.
+Finally, eliminate $\lambda_0$ by 
+forcing probability to sum to $1$.
+Define the partition function:
+\[ \Delta \equiv \sum_i 
+   \exp \left( \frac{-E_j - p V_j}{\kT} \right) \]
+Set $\lambda_0$ via the relation
+$\exp \left( 1 - \frac{\lambda_0}{\kB} \right) \equiv \frac{1}{\Delta}$.
+We arrive at the final result:
+\[ \boxed{ p_j = \frac{1}{\Delta} 
+   \exp \left( \frac{- E_j - p V_j}{\kT} \right) } \]
+\[ \boxed{ \Delta \equiv \sum_i 
+   \exp \left( \frac{-E_j - p V_j}{\kT} \right) } \]
+}
+
+\smallskip \subp
+Denote the partition function as $\Delta(N,p,T)$.
+We would like you to 
+(i) identify the thermodynamic potential
+corresponding to $\ln \Delta(N,p,T)$, 
+(ii) find an expression for $U = \ave{E}$,
+and (iii) show that your expression for $U$ is consistent with
+Euler's equation, $U - TS + pV - \mu N = 0$.
+\solution{\\
+(i) As discussed in class/class notes:
+\[ \boxed{ G = -\kT \ln \Delta(N,p,T) } \]
+(ii) Begin with $\Delta \equiv \sum_i \exp \left( \frac{-E_i - p V_i}{\kT} \right)$.
+Use $\beta \equiv \frac{1}{\kT}$ and $p$ as variables:
+\begin{align*}
+    \pdc{\ln \Delta}{\beta}{p} &= \frac{1}{\Delta} \pdc{\Delta}{\beta}{p} 
+  = \frac{1}{\Delta} \left[ \sum_i (-E_i - p V_i) 
+                    \exp \left( \frac{-E_i - p V_i}{\kT} \right) \right] \\
+ &= -\ave{E} - p \ave{V} \\
+    \pdc{\ln \Delta}{p}{\beta} &= \frac{1}{\Delta} \pdc{\Delta}{p}{\beta} 
+  = \frac{1}{\Delta} \left[ \sum_i \frac{-V_i}{\kT} 
+                    \exp \left( \frac{-E_i - p V_i}{\kT} \right) \right] \\
+ &= - \beta \ave{V}
+\end{align*}
+Combining these expressions (and correcting signs and factors of $\beta$):
+\[ \boxed{ U = \ave{E} = -\pdc{\ln \Delta}{\beta}{p}
+                  + p \kT \pdc{\ln \Delta}{p}{\beta} } \]
+(iii) Let's convert the derivatives in the $\ave{E}$ equation
+into classical thermodynamic quantities:
+\begin{align*}
+  -\pdc{\ln \Delta}{\beta}{p} &= \pdc{(\beta G)}{\beta}{p}
+  = \beta \pdc{G}{T}{p} \pdc{T}{(1/\kT)}{p} + G \pdc{\beta}{\beta}{p} \\
+ &= \beta (-S) (-\kT^2) + G = TS + G \\
+    p \kT \pdc{\ln \Delta}{p}{\beta} &= -p \kT \pdc{(\beta G)}{p}{\beta} 
+  = -p \pdc{G}{p}{T} = -pV
+\end{align*}
+Substituting into the expression from (ii):
+\[ \ave{E} = TS + G - pV \]
+Rearrange and we recover the definition of the Gibbs' Free Energy:
+\[ \boxed{ G \equiv U - TS + pV }\]
+\kh{I'm confident this is all you can do. 
+I don't see how you can pull $\mu$ or $N$ out of 
+the $(N,p,T)$ ensemble. You could do the following,
+but it is equivalent to the previous statement.}
+We have shown, purely from manipulating the partition function,
+that $\ave{E} = TS + G - pV$.
+Now, given that $G \equiv U - TS + pV$, 
+Euler's equation clearly reads $G = \mu N$.
+Thus:
+\[ \boxed{\ave{E} = TS + \mu N - p V } \]
+}
+
+\smallskip \subp
+Calculate the magnitude of the following fluctuations:
+$ \ave{(\delta U)^2} $,
+$ \ave{(\delta V)^2} $,
+and $ \ave{ \delta U \delta V } $.
+Express your answers in terms of the canonical material properties,
+$c_{\rm P}$, $\alpha$, and $\kappa_{\rm T}$.
+\solution{\\
+In order to best relate these quantities
+to classical thermodynamics, 
+choose $(\beta \equiv 1/\kT, p)$ as working variables.
+Since variances are typically given by
+partials of expectation values, we evaluate
+the following three derivatives as a starting point.
+Note $\ave{V}$ is simpler than $\ave{E}$ 
+with our choice of variables, so we
+take the mixed derivative with respect to $\ave{V}$. \newpage
+\begin{align*}
+    \pdc{\ave{V}}{p}{\beta}
+ &= \pd{}{p} \left[ \sum_i p_i V_i \right]_\beta
+  = \pd{}{p} \left[ \frac{1}{\Delta} \sum_i V_i 
+                    \exp \left( \frac{-E_j - p V_j}{\kT} 
+                                         \right) \right]_\beta \\
+ &= \frac{\Delta}{\Delta^2} 
+    \sum_i \left( \frac{-V_i^2}{\kT} \right) 
+    \exp \left( \frac{-E_j - p V_j}{\kT} \right)
+  - \left( \frac{-1}{\kT \Delta^2} \right) \left[ \sum_i V_i 
+    \exp \left( \frac{-E_j - p V_j}{\kT} \right) \right]^2 \\
+ &= - \frac{\ave{V^2}}{\kT}
+    + \frac{\ave{V}^2}{\kT}
+  = \frac{-1}{\kT} \ave{(\delta V)^2}
+\end{align*}
+\begin{align*}
+    \pdc{\ave{V}}{\beta}{p}
+ &= \pd{}{\beta} \left[ \frac{1}{\Delta} \sum_i V_i 
+                        \exp \left( \frac{-E_j - p V_j}{\kT} 
+                                             \right) \right]_p \\
+ &= \frac{\Delta}{\Delta^2} 
+    \sum_i \left( V_i (-E_j - p V_j) \right) 
+    \exp \left( \frac{-E_j - p V_j}{\kT} \right)
+  - \frac{1}{\Delta^2} \left[ \sum_i V_i 
+    e^{\left( \ldots \right)} \right] 
+    \left[ \sum_i (-E_j - p V_j)
+    e^{\left( \ldots \right)} \right] \\
+ &= -\ave{EV} - p\ave{V^2} + \ave{E}\ave{V} + p\ave{V}^2
+  = -\ave{\delta E \delta V} - p\ave{(\delta V)^2}
+\end{align*}
+\begin{align*}
+    \pdc{\ave{E}}{\beta}{p}
+ &= \pd{}{\beta} \left[ \frac{1}{\Delta} \sum_i E_i 
+                        \exp \left( \frac{-E_j - p V_j}{\kT} 
+                                             \right) \right]_p \\
+ &= \frac{\Delta}{\Delta^2} 
+    \sum_i \left( E_i (-E_j - p V_j) \right) 
+    \exp \left( \frac{-E_j - p V_j}{\kT} \right)
+  - \frac{1}{\Delta^2} \left[ \sum_i E_i 
+    e^{\left( \ldots \right)} \right] 
+    \left[ \sum_i (-E_j - p V_j)
+    e^{\left( \ldots \right)} \right] \\
+ &= -\ave{E^2} - p\ave{E V} + \ave{E}^2 + p\ave{E}\ave{V}
+  = -\ave{(\delta E)^2} -p \ave{\delta E \delta V}
+\end{align*}
+Combining the three derivatives above, you can see that:
+\begin{align*}
+  \ave{(\delta V)^2} &= 
+      -\kT \pdc{\ave{V}}{p}{\beta} \\
+  \ave{\delta E \delta V} &= 
+      -\pdc{\ave{V}}{\beta}{p} + p\kT \pdc{\ave{V}}{p}{\beta} \\
+  \ave{(\delta E)^2} &= 
+      -\pdc{\ave{E}}{\beta}{p} + p \pdc{\ave{V}}{\beta}{p} 
+     - p^2 \kT \pdc{V}{p}{\beta} \\
+\end{align*}
+To connect these quantities to classical thermodynamics,
+let $U \equiv \ave{E}$, $V \equiv \ave{V}$, and note
+that constant $\beta$ is the same as constant $T$. 
+We can use the chain rule to simplify derivatives in terms of $\beta$:
+\[ \pd{}{\beta} = \pd{}{T} \pd{T}{\beta} 
+ = \pd{}{T} \left( \pd{\beta}{T} \right)^{-1} = -\kT^2 \pd{}{T} \]
+\begin{align*} 
+  \ave{(\delta V)^2} &= 
+  - \kT \pdc{\ave{V}}{p}{\beta} 
+  = -\kT \pdc{V}{p}{T} = \kT V \kappa_T \\ \\
+  \ave{\delta E \delta V} &= 
+  - \pdc{\ave{V}}{\beta}{p} + p\kT \pdc{\ave{V}}{p}{T} 
+  = - (-\kT^2) \pdc{V}{T}{p} - \kT pV \kappa_T \\ 
+ &= \kT^2 V \alpha - \kT pV \kappa_T 
+  = \kT V ( \alpha T - p \kappa_T) \\ \\
+  \ave{(\delta E)^2} &= 
+  - \pdc{\ave{E}}{\beta}{p} + p \pdc{\ave{V}}{\beta}{p} 
+  - p^2 \kT \pdc{V}{p}{T} \\
+ &= -(-\kT^2) \pdc{U}{T}{p} - \kT^2 p V \alpha + \kT p^2 V \kappa_T \\
+ &= \kT^2 (C_p- p V \alpha) - \kT^2 p V \alpha + \kT p^2 V \kappa_T \\
+ &= \kT^2 C_p + \kT pV (p \kappa_T - 2 \alpha T)
+\end{align*}
+The final answer is therefore:
+\[ \boxed{ \ave{(\delta V)^2} 
+         = \kT V \kappa_T  } \]
+\[ \boxed{ \ave{\delta E \delta V}
+         =  \kT V ( \alpha T - p \kappa_T)  } \]
+\[ \boxed{ \ave{(\delta E)^2} 
+         = \kT^2 C_p + \kT pV (p \kappa_T - 2 \alpha T) } \]
+One nice check you can do with these three results:
+\[ \ave{(\delta H)^2} = \ave{(\delta U + p \delta V)^2} 
+ = \ave{(\delta E)^2} + 2 p \ave{\delta E \delta V} 
+ + p^2 \ave{(\delta V)^2} = \kT^2 C_p \]
+\newpage
+}
+
+
+\bigskip
+\problem{15}
+Liquid water typically contains dissolved salts.
+We would like to investigate how dissolved ions
+affect solution thermodynamics.
+To aid in our analysis, assume the solution is incompressible
+and divide the solution volume $V$ into
+$N$ equal cells of volume $v$.
+To keep things simple, assume that solvent molecules, cations, and anions 
+each occupy one cell volume ($v = 30\,\text{\AA}^3$),
+and that the solution is at constant temperature $T$. 
+Let $n_1$ denote the number of solvent molecules,
+and $n_2 = N - n_1$ denote the total number of ions.
+
+\smallskip \subp
+Let us begin by looking at the free energy of an ``ideal'' salt solution. 
+Assume that ions do not interact and treat cations and anions as the same species.
+(i) Write down an expression for $\Omega$,
+the number of ways solvent and solute molecules 
+can be distributed in the $N$ cells, and
+(ii) using your expression for $\Omega$, 
+show that the free energy can be written
+\[
+F_0 = -TS = - k_{\rm B} T \ln \Omega =
+N k_{\rm B} T \left[ \phi \ln(\phi) + (1 - \phi) \ln(1 - \phi) \right]
+\]
+Here, $\phi \equiv n_2/N$ is the mole fraction of ions. 
+\solution{ \\
+$\Omega$ comes from a simple combinatorial expression. If ions are the same:
+\[ \boxed{ \Omega = \binom{N}{n_1} = \frac{N!}{n_1!(N-n_1)!}  
+                                   = \frac{N!}{n_1!\,n_2!} } \]
+Apply Stirling's approximation to simplify $\ln \Omega$.
+\begin{align*}
+\ln \Omega &= \ln N! - \ln n_1! - \ln n_2! \\ 
+   &= \ln (n_1 + n_2)! - \ln n_1! - \ln n_2! \\
+   &\approx (n_1 + n_2) \ln (n_1 + n_2) - n_1 \ln n_1 - n_2 \ln n_2 
+           + n_1 + n_2 - n_1 - n_2 \\ 
+   &= n_1 \ln \left( \frac{n_1 + n_2}{n_1} \right) 
+    + n_2 \ln \left( \frac{n_1 + n_2}{n_2} \right) \\
+   &= -n_1 \ln \left( \frac{n_1}{N} \right) - n_2 \ln \left( \frac{n_2}{N} \right)
+\end{align*}
+Given that $\phi \equiv n_2/N$ and $N \equiv n_1 + n_2$,
+it is clear that $1 - \phi \equiv n_1/N$. 
+\begin{align*}
+   F_0 &= -\kT \ln \Omega = -\kT \left[ -n_1 \ln \left( \frac{n_1}{N} \right) 
+         - n_2 \ln \left( \frac{n_2}{N} \right) \right] \\
+       &= N \kT \left[ (1 - \phi) \ln (1 - \phi) + \phi \ln (\phi) \right]
+\end{align*}
+\[ \boxed{ F_0 = N \kT \left[ \phi \ln (\phi) + (1-\phi) \ln (1-\phi) \right] } \]
+}
+
+
+\smallskip \subp
+In reality, salt solutions are non-ideal because
+ions exhibit long-ranged Coulombic interactions.
+As a result, cations in solution 
+are typically surrounded by a `cloud' of anions, and vice versa. 
+The size of this ion `cloud' is characterized 
+by the Debye length, $\lambda_{\rm D}$
+($V_{\rm cloud} \simeq \lambda_{\rm D}^3$).
+\\ \\
+Let us focus on a single ion.
+On average, this ion is surrounded by $n_{\rm cloud}$ ions
+of the opposite charge.
+Each ion in this `cloud' contributes a Coulombic energy
+of order $1 / \lambda_{\rm D}$. 
+The total energy felt by the ion is of order $\kT$,
+i.e. $n_{\rm cloud} \times (\kappa / \lambda_{\rm D}) \simeq k_{\rm B} T$,
+where $\kappa$ is a positive constant.
+Using this assertion, show that
+\[ \lambda_{\rm D} \propto \phi^{-1/2} \]
+\solution{  
+The average number of ions in the cloud is given by the bulk concentration:
+\[ n_{\rm cloud} = c_{\rm ion} V_{\rm cloud}
+ = \left(\frac{\phi}{v}\right) \lambda_{\rm D}^3 \] 
+\[ n_{\rm cloud} \left( \frac{\kappa}{\lambda_{\rm D}} \right)
+ = \frac{\phi \lambda_{\rm D}^3}{v} 
+   \left( \frac{\kappa}{\lambda_{\rm D}} \right)
+ = \frac{\kappa \phi \lambda_{\rm D}^2}{v} \simeq \kT \]
+We have assumed that the net electrostatic 
+energy of an ion at equilibrium is of order $\kT$. 
+Rearrange the expression to get:
+\[ \boxed{ \lambda_{\rm D} \simeq \left( \frac{\kT v}{\kappa \phi} \right)^{1/2} 
+           \propto \phi^{-1/2} }\]
+}
+
+
+\smallskip \subp
+The result from part (b) can be used to show
+that the free energy of the non-ideal solution is:
+\begin{equation}
+F = F_0 - k_{\rm B} T \frac{V}{\lambda_{\rm D}^3}
+= N k_{\rm B} T \left( f_0 - \alpha \phi^{3/2} \right).
+\label{eq:fVO}
+\end{equation}
+Here, $f_0 \equiv F_0 / (N k_{\rm B} T)$ and
+$\alpha$ is a positive constant that doesn't depend on $\phi$.
+The $\phi^{3/2}$ term is negative because
+Coulombic interactions favor ion aggregation and
+destabilize mixing. \\ \\ 
+Starting from the expression above, find 
+(i) the chemical potential of the solvent ($\mu_1(\phi)$),
+(ii) the chemical potential of the ions ($\mu_2(\phi)$),
+and (iii) show that these results are consistent
+with the Gibbs-Duhem relation for solutions, 
+$ (1-\phi)\,\dd \mu_1 + \phi\,\dd \mu_2 = 0 $.
+\solution{ \\
+Define $f \equiv F/N$. Since $f(\phi)$ depends only on $\phi$:
+\begin{align*}
+\mu_1 &= \left. \pd{(N f(\phi))}{n_1} \right|_{n_2,T}
+       = N \pd{f}{\phi} \pdc{\phi}{n_1}{n_2} + f \pdc{N}{n_1}{n_2}
+       = N \pd{f}{\phi} \left( \frac{-\phi}{N} \right) + f(\phi) \\
+      &= f(\phi) - \phi f'(\phi) \\
+\mu_2 &= \left. \pd{(N f(\phi))}{n_2} \right|_{n_1,T} 
+       = N \pd{f}{\phi} \pdc{\phi}{n_2}{n_1} + f \pdc{N}{n_2}{n_1}
+       = N \pd{f}{\phi} \left( \frac{1-\phi}{N} \right) + f(\phi) \\
+      &= f(\phi) + (1-\phi) f'(\phi)
+\end{align*}
+As defined, we can write:
+\[ f(\phi)  = \kT \left[ \phi \ln (\phi) + (1-\phi) \ln (1-\phi) 
+            - \alpha \phi^{3/2} \right] \]
+\[ f'(\phi) = \kT \left[ \ln (\phi) - \ln (1-\phi) 
+            - \frac{3 \alpha}{2} \phi^{1/2} \right] \]
+Applying the above, it is straightforward to show that:
+\[ \boxed{ \text{(i) } \mu_1 = \kT \left[ \ln (1-\phi) 
+                + \frac{\alpha \phi^{3/2}}{2} \right]} \]
+\[ \boxed{ \text{(ii) } \mu_2 = \kT \left[ \ln \phi 
+                - \frac{3 \alpha \phi^{1/2}}{2}
+                + \frac{\alpha \phi^{3/2}}{2} \right]} \] \\
+(iii) To show Gibbs-Duhem (at constant $T$),
+wrap the $\kT$ factor into the expression to simplify it
+($\mu/\kT \equiv \beta \mu$ drops constant $\kT$ factor):
+$(1-\phi)\,\dd (\beta \mu_1) + \phi\,\dd (\beta \mu_2) = 0$.
+\[ (1-\phi)\,\dd(\beta \mu_1) =
+   (1-\phi) \left[ \frac{-1}{1-\phi} 
+ + \frac{3 \alpha \phi^{1/2}}{4} \right]\,\dd \phi 
+ = \left[ -1 + \frac{3 \alpha \phi^{1/2}}{4} 
+             - \frac{3 \alpha \phi^{3/2}}{4} \right]\,\dd \phi \]
+\[ \phi\,\dd(\beta \mu_2) = 
+   \phi \left[ \frac{1}{\phi} - \frac{3 \alpha}{4 \phi^{1/2}} 
+             + \frac{3 \alpha \phi^{1/2}}{4} \right]\,\dd \phi 
+ = \left[ 1 - \frac{3 \alpha \phi^{1/2}}{4} 
+            + \frac{3 \alpha \phi^{3/2}}{4} \right]\,\dd \phi \]
+Clearly, $(1-\phi)\,\dd \mu_1 = -\phi\,\dd \mu_2$.
+Thus, we have shown:
+\[ \boxed{(1-\phi)\,\dd \mu_1 + \phi\,\dd \mu_2 = 0} \] \\ \\
+{\bf Alternative Solution for $\mu_1$ and $\mu_2$: } 
+If you prefer to use $n_1$ and $n_2$ directly:
+\begin{align*}
+F &= N \kT \left[ \phi \ln (\phi) + (1-\phi) \ln (1-\phi) 
+     - \alpha \phi^{3/2} \right] \\
+  &= \kT \left[ n_2 \ln \left( \frac{n_2}{n_1 + n_2} \right) 
+              + n_1 \ln \left( \frac{n_1}{n_1 + n_2} \right) 
+              - \alpha \left( \frac{n_2^3}{n_1 + n_2} \right)^{1/2} \right]
+\end{align*}
+Since $\dd F = -S\,\dd T + \mu_1\,\dd n_1 + \mu_2\,\dd n_2$
+\begin{align*}
+  \frac{\mu_1}{\kT} 
+        &= \frac{1}{\kT} \pdc{F}{n_1}{n_2,T} \\
+        &= \frac{-n_2}{n_1 + n_2} 
+         + \frac{n_2}{n_1 + n_2} 
+         + \ln \left( \frac{n_1}{n_1 + n_2} \right) 
+         + \frac{\alpha}{2} \left( \frac{n_2}{n_1+n_2} \right)^{3/2}  \\
+        &= \ln (1 - \phi) + \alpha \frac{\phi^{3/2}}{2} \\
+  \frac{\mu_2}{\kT} 
+        &= \frac{1}{\kT} \pdc{F}{n_2}{n_1,T} \\ 
+        &= \frac{n_1}{n_1 + n_2} 
+         + \ln \left( \frac{n_2}{n_1 + n_2} \right)
+         - \frac{n_1}{n_1 + n_2} 
+         - \frac{3\alpha}{2} \left( \frac{n_2}{n_1 + n_2} \right)^{1/2}
+         + \frac{\alpha}{2} \left( \frac{n_2}{n_1 + n_2} \right)^{3/2} \\
+        &= \ln \phi - \frac{3 \alpha \phi^{1/2}}{2} + \frac{\alpha \phi^{3/2}}{2}
+\end{align*}
+\newpage
+}
+
+
+
+
+\bigskip
+\problem{15}
+Perhaps surprisingly, it is rather painful to get saltwater in your nose.
+This pain is caused by the osmotic pressure of dissolved ions,
+which results from composition fluctuations. 
+Let us determine this osmotic pressure.
+The results from {\bf Problem~3} will be needed
+to complete some of these questions.
+Once again, assume that saltwater is incompressible, 
+and subdivide the solution volume $V$ into $N$ identically-sized 
+cells with volume $v$. 
+the $n_1$ solvent molecules and $n_2 = N - n_1$ ions,
+have the same volume $v$.  
+We define $\phi \equiv n_2/N$. 
+
+\smallskip \subp
+Although the solution is macroscopically homogeneous,
+there are microscopic fluctuations because
+the contents of each `cell' fluctuate.
+Show that, in the absence of Coulombic interactions,
+composition fluctuations in a single cell are given by
+($\phi_0 \equiv \ave{\phi}$ is the bulk mole fraction):
+\begin{equation}
+\ave{(\delta \phi)^2} = \phi_0 (1 - \phi_0) ,
+\label{eq:random}
+\end{equation}
+Since only one particle may occupy a cell at a time,
+it is useful to think of $\phi_0 = \ave{\phi} = \ave{n_{\rm ion}}$,
+where $n_{\rm ion} = \{0\text{ or }1\}$ is the number of ions in the cell.
+\solution{ \\
+Let $n_{\rm ion}$ be the number
+of ions in a single cell (either zero or one).
+We are given that $\phi_0 = \ave{n_{\rm ion}}$.
+Since this is a two state system, $\phi_0$ 
+defines the probability of seeing an ion in the cell.
+\[ \ave{n_{\rm ion}} = \sum_i p_i n_i 
+ = (1-\phi_0)*(0) + \phi_0*(1) = \phi_0 \]
+We can directly evaluate:
+\[ \ave{n_{\rm ion}^2} = \sum_i p_i n_i^2
+= (1-\phi_0)*(0)^2 + \phi_0*(1)^2 = \phi_0 \]
+Thus we have shown that $\ave{\phi_0} = \ave{\phi_0^2}$. 
+Evaluate the variance: 
+\[ \ave{(\delta \phi)^2} = \ave{\phi^2} - \ave{\phi}^2 
+ = \ave{n_{\rm ion}^2} - \ave{n_{\rm ion}}^2
+ = \phi_0 - \phi_0^2 = \phi_0 (1 - \phi_0) \]
+\[ \boxed{ \ave{(\delta \phi)^2} = \phi_0 (1 - \phi_0) } \] 
+}
+
+\smallskip \subp
+More effort is required if Coulombic interactions
+cannot be neglected.
+The free energy per cell is $F/N \equiv f(\phi)$,
+where $F$ is given by Eq.~(\ref{eq:fVO}).
+Let us view each cell as a subsystem 
+capable of mass exchange with its surroundings
+via the ``exchange'' chemical potential
+$w = \frac{\partial f}{\partial \phi} \equiv f'(\phi_0)$.
+The resulting probability of observing a cell with composition $\phi$ is:
+\[ p(\phi) \propto e^{- (f(\phi) + w \phi)/(k_{\rm B} T) } \]
+This defines the generating/partition function 
+$Z(w) \equiv \int\!\dd\phi\,e^{- (f(\phi) + w \phi)/(k_{\rm B} T) }$.
+It follows that:
+\[ \ave{(\delta \phi)^2} = (k_{\rm B}T)^2 \frac{\partial^2 \ln Z(w)}{\partial w^2}
+= k_{\rm B} T \frac{\partial \ave{\phi}}{\partial w}
+= k_{\rm B} T \frac{\partial \phi_0}{\partial w} \]
+This is analogous to the evaluation of $\ave{(\delta N)^2}$ from
+the grand canonical ensemble.
+Using $w \equiv f'(\phi_0)$, the last expression can be rearranged to yield
+(for a single volume cell):
+\[ \ave{(\delta \phi)^2} = \frac{k_{\rm B} T}{f''(\phi_0)} \]
+(i) Show that as $\alpha \rightarrow 0$,
+this expression is consistent with Eq.~(\ref{eq:random}).
+(ii) Write an expression for the total composition fluctuation
+in $m$ cells, then
+(iii) write an expression for the thermodynamic stability limit
+of the salt solution. What happens to $\ave{(\delta \phi)^2}$
+at this limit? Why?
+\solution{ \\
+\[ f(\phi) = \kT \left[\phi \ln (\phi) + (1-\phi) \ln (1-\phi)
+           - \alpha \phi^{3/2} \right] \]
+Since $f(\phi)$ is a function of only $\phi$, 
+$f''(\phi)$ is just the second derivative with respect to $\phi$.
+\begin{align*}
+f''(\phi) &= \frac{\dd}{\dd \phi} \left[ \frac{\dd f(\phi)}{\dd \phi} \right]
+           = \kT \frac{\dd}{\dd \phi} \left[
+             \ln (\phi) - \ln (1-\phi) 
+           - \frac{3 \alpha}{2} \phi^{1/2} \right] \\
+          &= \kT \left[ \frac{1}{\phi} + \frac{1}{1-\phi}
+                      - \frac{3 \alpha}{4} \phi^{-1/2} \right] 
+           = \kT \left[ \frac{1}{\phi(1-\phi)} 
+                      - \frac{3 \alpha}{4} \phi^{-1/2} \right]
+\end{align*}
+(i.) Take the limit as $\alpha \rightarrow 0$:
+\[ \boxed{ \lim_{\alpha \rightarrow 0} \ave{(\delta \phi)^2} 
+         = \frac{k_{\rm B} T}{f''(\phi_0)}
+         = \frac{\kT}{\kT} \left( \frac{1}{\phi_0(1-\phi_0)} \right)^{-1}
+         = \phi_0 (1-\phi_0) } \]
+This is a good indication our work in 4(a) was correct! \\ \\
+(ii.) The total free energy of $m$ cells is
+$F = m f(\phi)$. For simplicity, we just assume
+that when $m$ is very large, the cells are uncorrelated.
+Though this assumption is annoying, consider
+that only cells that are close to each other should have
+correlated fluctuations.
+In the limit that $m \rightarrow \infty$, 
+these local correlations become unimportant.
+Thus, multiply $f(\phi)$ by $m$ to get:
+\[ \boxed{ \ave{(\delta \phi_{\rm total})^2} 
+         = \frac{\kT}{m f''(\phi_0)} 
+         = \frac{1}{m} \ave{(\delta \phi)^2} } \] \\
+(iii.) We are interested in the stability condition
+with respect to composition fluctuations. 
+These are governed by fluctuations in the 
+extensive variables $n_1$ and $n_2$.
+In Homework 2, you showed that stability conditions from
+simultaneous fluctuations in extensive variables were
+equivalent to the conditions obtained by considering
+fluctuations in one variable only. 
+We take the converse - stability is equivalently 
+governed by simultaneous fluctuation in $n_1$ and $n_2$.
+The critical mode (i.e. composition change fluctuation)
+corresponds to $\dd n_1 = - \dd n_2$. 
+Recognizing this is enough justification to use $\phi$,
+but if you want, it's not too bad to show mathematically:
+\begin{align*}
+    \pdc{^2 F}{n_1^2}{n_2,T} &= \pdc{^2 (Nf(\phi))}{n_1^2}{n_2,T}
+  = \pd{}{n_1} \left[ N \pdc{f}{n_1}{n_2} + f \pdc{N}{n_1}{n_2} \right]_{n_2,T} \\
+ &= \pdc{\phi}{n_1}{n_2} \pd{}{\phi}
+    \left[N \pdc{\phi}{n_1}{n_2} \pd{f}{\phi} + f \right] \\
+ &= \left( \frac{-\phi}{N} \right) \pd{}{\phi}
+    \left[-\phi \pd{f}{\phi} + f \right] \\
+ &= \left( \frac{-\phi}{N} \right)
+    \left[-\phi \pd{^2 f}{\phi^2} - \pd{f}{\phi} + \pd{f}{\phi} \right] 
+  = \left( \frac{\phi^2}{N} \right) \pd{^2 f}{\phi^2}
+\end{align*}
+Remember that we {\bf minimize} free energies. 
+The thermodynamic stability limit is:
+\[ \boxed{ \left( \frac{\partial^2 f}{\partial \phi^2} \right)_T
+ = f''(\phi) > 0 } \]
+The ideal term ($\phi(1-\phi)$, where $0 \leq \phi \leq 1$) 
+is always positive, so we approach the stability limit 
+from the positive side ($f''(\phi) \rightarrow 0^+$)
+when $\alpha$ becomes large. 
+At the stability limit, since the composition fluctuation
+is proportional to $1/f''(\phi)$, 
+$\ave{(\delta \phi)^2} \rightarrow \infty$. 
+\[ \boxed{ \ave{(\delta \phi)^2} \text{ diverges at the 
+   stability limit due to phase transition.} }\]
+A phase transition represents macroscopic segregation/ordering,
+which can only occur when microscopic fluctuations become
+macroscopically in scale. \\
+}
+
+\smallskip \subp
+The osmotic pressure $\Pi$ pushes solvent molecules
+from regions of low to high solute concentration.
+It accounts for the free energy change per cell
+after a solvent molecule is displaced.
+\[ \Pi = - \frac{1}{v} \left( \frac{\partial F}{\partial n_1}  \right)_{n_2} 
+       = - \frac{\mu_1}{v} \]
+As seen above, osmotic pressure is directly related to the chemical potential.
+Write an expression for the osmotic pressure
+in the limit that the solution is very dilute. 
+Use the non-ideal form of chemical potential 
+you obtained in {\bf Problem~3(c)}.
+Keep only the leading-order term.
+\solution{ \\
+Plugging in the expression for $\mu_1$ from Problem 3(c):
+\[ \Pi = -\frac{\mu_1}{v} 
+       = \frac{\kT}{v} 
+         \left[ \ln (1-\phi) + 
+         \frac{\alpha \phi^{3/2}}{2} \right] \]
+In the limit that the solution is dilute, $\phi \rightarrow 0$.
+We can Taylor expand the log term to get:
+\[ \lim_{\phi \rightarrow 0} \Pi \approx \frac{-\kT}{v}
+   \left[ -\phi - \frac{\phi^2}{2} - \cdots 
+          + \frac{\alpha \phi^{3/2}}{2} \right] \approx
+   \frac{\kT \phi}{v} \]
+Notice that the leading order term 
+does not depend on $\alpha$!
+\[ \boxed{ \lim_{\phi \rightarrow 0} \Pi \approx 
+           \frac{\kT \phi}{v} } \]
+}
+
+\smallskip \subp
+Saltwater typically has a concentration of
+$\phi_0 / v = \rm 0.3\,nm^{-3}$.
+Calculate the room temperature osmotic pressure 
+of saltwater using your result from part~(c).
+Use ``bar'' as your units of pressure.
+Is it surprising that this pressure is painful?
+\solution{\\
+\[ \Pi \approx (1.38*10^{-23}\,{\rm J/K})*(300\,{\rm K})
+              *(0.3*10^{27}\,{\rm m}^{-3}) 
+             = 12.4\,{\rm bar} \]
+This is quite a large osmotic pressure! 
+Our estimate from (c) is an upper bound, 
+because we have neglected the opposing electrostatic term
+(that depends on $\alpha$), but nevertheless, 
+the osmotic pressure is on the order of $10$ atm.
+Not a big surprise that it hurts!
+\[ \boxed{ \Pi \approx 12.4\,{\rm bar} } \]
+}
+
+\iffalse
+\smallskip \subp
+The free energy expression we arrived at implies that,
+when solution is sufficiently concentrated or
+temperature is sufficiently low,
+the originally homogeneous solution can undergo a phase-separation,
+resulting in a water-rich supernatant
+coexisting with an ion-rich concentrated electrolyte solution.
+The nature of this phase separation is analogous to
+the liquid-vapor coexistence predicted by the Van der Waals
+equation of state:
+The conjugate pair $(\Pi, \phi)$ for solution is fully analogous
+to the pair $(p, V)$ for Van der Waals fluid.
+Drawing from this analogy, find out the
+compositions for the two coexisting phases, i.e.,
+the binodal compositions, for several values of $\alpha$.
+Find out the values of $\alpha$ and $\phi$ at the critical point.
+Plot the values you obtained in the $\alpha$-$\phi$ plane.
+{\sl FYI: This is the simplest model for studying the
+phase separation in aqueous solutions, coacervation.}
+\fi
+
+\iffalse % Keep in case students make same mistake
+\begin{align*}
+   \dd \left( \frac{\mu_1}{\kT} \right) &= 
+       \pdc{(\beta \mu_1)}{n_1}{n_2,T} \dd n_1 
+     + \pdc{(\beta \mu_1)}{n_2}{n_1,T} \dd n_2 \\
+    &= \left[ \frac{n_2}{N n_1} + \frac{3}{4 n_2} 
+       \left( \frac{n_2}{N} \right)^{5/2} \right]\,\dd n_1
+     + \left[-\frac{1}{N} - \frac{3 n_1}{4 (N)^2} 
+              \left( \frac{n_2}{N} \right)^{1/2} \right]\,\dd n_2
+\end{align*}
+\begin{align*}
+   \dd \left( \frac{\mu_2}{\kT} \right) &= 
+       \pdc{(\beta \mu_2)}{n_1}{n_2,T} \dd n_1 
+     + \pdc{(\beta \mu_2)}{n_2}{n_1,T} \dd n_2 \\
+    &= \left[-\frac{1}{N} - \frac{3}{4 n_2} 
+              \left( \frac{n_2}{N} \right)^{3/2} 
+            + \frac{3}{4 n_2} 
+              \left( \frac{n_2}{N} \right)^{5/2} \right]\,\dd n_1
+     + \left[ \frac{n_1}{N n_2} + \frac{3 n_1}{4}
+              \left( \frac{n_2}{N} \right)^{1/2} 
+            - \frac{3 n_1}{4N^2} 
+              \left( \frac{n_2}{N} \right)^{1/2} \right]\,\dd n_2
+\end{align*}
+\fi

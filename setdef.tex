@@ -1,0 +1,35 @@
+\font\tiny=cmr5
+\def\wrapsign#1#2#3{\wrap{{\textcolor{#2}{#1}}}\lower 4pt\hbox{\tiny #3}}
+\def\wrap#1{[\kern-2pt[\thinspace{#1}\thinspace]\kern-2pt]}
+
+\def\ave#1{\left\langle#1\right\rangle}
+\def\pdd#1#2{\frac{\dd #1}{\dd #2}}
+\def\pd#1#2{\frac{\partial #1}{\partial #2}}
+\def\pdc#1#2#3{\left(\frac{\partial#1}{\partial#2}\right)_{#3}}
+\def\kB{k_{\rm\scriptscriptstyle B}}
+\def\kT{k_{\rm\scriptscriptstyle B}T}
+\def\NA{N_{\rm\scriptscriptstyle A}}
+\def\ee{{\rm e}}
+\def\dd{{\rm d}}
+\def\img{{\rm i}}
+\def\rv{{\bf r}}
+\def\vv#1{{\bf #1}}
+\def\bs#1{\boldsymbol{#1}}
+
+% true for comments, false to suppress
+\ifcomment
+\def\jq#1{\wrapsign{#1}{blue}{JQ}}
+\def\kh#1{\wrapsign{#1}{magenta}{KH}}
+\def\ms#1{\wrapsign{#1}{cyan}{MS}}
+\else
+\def\jq#1{}
+\def\kh#1{}
+\def\ms#1{}
+\fi
+
+% true for solutions, false to suppress 
+\ifsolution
+\def\solution#1{\medskip \noindent \textcolor{sured}{#1} \medskip} 
+\else
+\def\solution#1{}
+\fi
